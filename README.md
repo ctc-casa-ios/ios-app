@@ -1,36 +1,70 @@
-# TypeScript Example
-
-<p>
-  <!-- iOS -->
-  <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
-  <!-- Android -->
-  <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
-  <!-- Web -->
-  <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
+<h1 align="center">
+  CASA IOS Project Overview
+</h1>
+<br />
+<p align="center"><a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /></a>&nbsp;<a href="https://github.com/marklawlor/nativewind" target="_blank"><img src="https://img.shields.io/badge/tailwindcss-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white"/></a>&nbsp;<a href="https://reactnative.dev/"><img src="https://img.shields.io/badge/react native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" /></a>&nbsp;<a href="https://jestjs.io/" target="_blank"><img src="https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white" target="_blank"/></a>
 </p>
 
-```sh
-npx create-react-native-app -t with-typescript
+
+</div>
+
+<!-- ABOUT THE PROJECT -->
+
+In partnership with [Ruby for Good CASA](https://github.com/rubyforgood/casa) (Court Appointed Special Advocate), Code the Change YYC is creating an IOS app that allows CASA volunteers to conveniently save their case contacts.
+
+<!-- GETTING STARTED -->
+
+## 🚀 Getting Started
+
+### Prerequisites
+Run the following command to ensure node is installed on your device
+
+```
+npm -v
+```
+If the npm command is not recognized, please install the latest version of [Node.js](https://nodejs.org/en/download/).
+<br />
+<br />
+Install [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
+```
+npm install --global yarn
 ```
 
-TypeScript is a superset of JavaScript which gives you static types and powerful tooling in Visual Studio Code including autocompletion and useful inline warnings for type errors.
+Additionally, if you have an IOS device, download the [Expo Go](https://apps.apple.com/us/app/expo-go/id982107779) app for previewing. Otherwise, [Snack](https://snack.expo.dev/) is expo's official web-based alternative.
 
-## 🚀 How to use
+### Installation
+1. Create [your own fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) of this repository and clone that repository to a directory on your local computer
+```
+git clone https://github.com/YOUR_USER_NAME/casa-ios-ctc.git
+```
 
-#### Creating a new project
+2. Install expo-cli 
+```
+npm i -g expo-cli
+```
 
-- Install the CLI: `npm i -g expo-cli`
-- Create a project: `npx create-react-native-app -t with-typescript`
-- `cd` into the project
+3. Run the application
+ ```
+ npx expo start
+ ```
 
-### Adding TypeScript to existing projects
-
-- Create a blank TypeScript config: `touch tsconfig.json`
-- Run `yarn start` or `npm run start` to automatically configure TypeScript
-- Rename files to TypeScript, `.tsx` for React components and `.ts` for plain typescript files
-
-> 💡 You can disable the TypeScript setup in Expo CLI with the environment variable `EXPO_NO_TYPESCRIPT_SETUP=1 expo start`
-
-## 📝 Notes
-
-- [Expo TypeScript guide](https://docs.expo.dev/versions/latest/guides/typescript/)
+  You should now have a React Native / Typescript app running on
+  the localhost address displayed within your terminal. A QR code should also appear. 
+  <br />
+  <br />
+  To preview the application, scan the QR code on your iphone or import your forked repo into [Snack](https://snack.expo.dev/) by clicking the 3 dots to the right of "Project"
+  
+  <p align="center"> < insert image here > </p>
+  
+  ## ✨ Extra
+  
+  Now that the project is set up, you can contribute to it! :)
+  To ensure everything is working as it should, create an initial "landing pull request" this should be a small change such as adding an emoji or a greeting to the main page.
+  - Within your local repo, run ```git status``` to ensure you're on the ```main``` branch
+  - Create a seperate branch within your local repo with ```git checkout -b YOUR_BRANCH_NAME```
+  - Make your addition(s). Ensure that the edited files are added with 
+  ```git add CHANGED_FILE```, run ```git status``` often
+  - Then, after every few changes, commit with ```git commit -m " YOUR COMMIT DESCRIPTION "```
+  - Finally, ensuring my repo is set as the upstream, ```git push``` the changes to your fork and make a pull request to this repo
+  
+  Congrats, you are now an open source developer 😎

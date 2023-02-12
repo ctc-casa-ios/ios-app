@@ -1,18 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View, Text, Image } from 'react-native';
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+
+    <View className="flex-1 items-center justify-center bg-white">
+            <Image
+              source={require('./ctc-logo.png')}
+              style={{ width: 100, height: 100 }}
+              className="mb-5"
+              />
+      <Text className="text-red-500 text-3xl font-bold">🎉 Congratulations 🥳</Text>
+      <Text className="text-red-500 text-xl mt-2">Setup Complete</Text>
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
