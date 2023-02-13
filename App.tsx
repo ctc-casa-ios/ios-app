@@ -12,6 +12,8 @@ const App = () => {
               />
       <Text className="text-red-500 text-3xl font-bold">🎉 Congratulations 🥳</Text>
       <Text className="text-red-500 text-xl mt-2">Setup Complete</Text>
+      <Text className="text-red-500 text-xl mt-2">👋🐸</Text>
+
     </View>
   );
 };
