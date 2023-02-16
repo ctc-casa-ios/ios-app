@@ -10,7 +10,7 @@
 
 <!-- ABOUT THE PROJECT -->
 
-In partnership with [Ruby for Good CASA](https://github.com/rubyforgood/casa) (Court Appointed Special Advocate), Code the Change YYC is creating an IOS app that allows CASA volunteers to conveniently save their case contacts.
+In partnership with [Ruby for Good CASA](https://github.com/rubyforgood/casa) (Court Appointed Special Advocate), [Code the Change YYC](https://www.codethechangeyyc.ca/) is creating an IOS app that allows CASA volunteers to conveniently save their case contacts.
 
 <!-- GETTING STARTED -->
 

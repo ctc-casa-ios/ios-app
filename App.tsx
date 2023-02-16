@@ -12,7 +12,10 @@ const App = () => {
               />
       <Text className="text-red-500 text-3xl font-bold">🎉 Congratulations 🥳</Text>
       <Text className="text-red-500 text-xl mt-2">Setup Complete</Text>
+
       <Text className="text-red-500 text-xl mt-2">👋🐸</Text>
+      
+      <Text className="text-orange-600 text-5xl font-bold mt-2">Tailwind is Awesome! 🤩</Text>
 
     </View>
   );
