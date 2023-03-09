@@ -54,7 +54,7 @@ npm i -g expo-cli
   <br />
   To preview the application, scan the QR code on your iphone or import your forked repo into [Snack](https://snack.expo.dev/) by clicking the 3 dots to the right of "Project"
   
-  <p align="center"> < insert image here > </p>
+  
   
   ## ✨ Extra
   
