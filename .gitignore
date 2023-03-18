@@ -62,3 +62,7 @@ buck-out/
 # Expo
 .expo/*
 web-build/
+
+# npm/yarn locks
+package-lock.json
+yarn.lock
