@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-    unit-tests:
+  unit-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
       - name: Test
         run: yarn test
 
-    lint-and-format:
+  lint-and-format:
     runs-on: ubuntu-latest
 
     steps:
