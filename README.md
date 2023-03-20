@@ -65,6 +65,6 @@ npm i -g expo-cli
   - Make your addition(s). Ensure that the edited files are added with 
   ```git add CHANGED_FILE```, run ```git status``` often
   - Then, after every few changes, commit with ```git commit -m " YOUR COMMIT DESCRIPTION "```
-  - Finally, ensuring my repo is set as the upstream, ```git push``` the changes to your fork and make a pull request to this repo that resolves one of the     "Landing/Onboarding Pull Request's"
+  - Finally, ensuring my repo is set as the upstream, ```git push``` the changes to your fork and make a pull request to this repo's ```onboarding``` branch that resolves one of the     "Landing/Onboarding Pull Request's"
   
   Congrats, you are now an open source developer 😎
