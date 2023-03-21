@@ -38,7 +38,7 @@ Additionally, if you have an IOS device, download the [Expo Go](https://apps.app
 git clone https://github.com/YOUR_USER_NAME/casa-ios-ctc.git
 ```
 
-2. Install expo-cli 
+2. Install expo-cli
 ```
 npm i -g expo-cli
 ```
@@ -49,22 +49,22 @@ npm i -g expo-cli
  ```
 
   You should now have a React Native / Typescript app running on
-  the localhost address displayed within your terminal. A QR code should also appear. 
+  the localhost address displayed within your terminal. A QR code should also appear.
   <br />
   <br />
   To preview the application, scan the QR code on your iphone or import your forked repo into [Snack](https://snack.expo.dev/) by clicking the 3 dots to the right of "Project"
-  
-  
-  
+
+
+
   ## ✨ Extra
   
   Now that the project is set up, you can contribute to it! :)
   To ensure everything is working as it should, create an initial "landing pull request" this should be a small change such as adding an emoji or a greeting to the main page.
   - Within your local repo, run ```git status``` to ensure you're on the ```main``` branch
   - Create a seperate branch within your local repo with ```git checkout -b YOUR_BRANCH_NAME```
-  - Make your addition(s). Ensure that the edited files are added with 
+  - Make your addition(s). Ensure that the edited files are added with
   ```git add CHANGED_FILE```, run ```git status``` often
   - Then, after every few changes, commit with ```git commit -m " YOUR COMMIT DESCRIPTION "```
-  - Finally, ensuring my repo is set as the upstream, ```git push``` the changes to your fork and make a pull request to this repo's ```onboarding``` branch that resolves one of the     "Landing/Onboarding Pull Request's"
-  
+  - Finally, ensuring my repo is set as the upstream, ```git push``` the changes to your fork and make a pull request to this repo that resolves one of the     "Landing/Onboarding Pull Request's"
+
   Congrats, you are now an open source developer 😎

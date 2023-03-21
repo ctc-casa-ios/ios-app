@@ -1,26 +1,29 @@
 import React from "react";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { View, Text, Image } from "react-native";
 
-const App = () => {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Image
-        source={require("./ctc-logo.png")}
-        style={{ width: 100, height: 100 }}
-        className="mb-5"
-      />
-      <Text className="text-red-500 text-3xl font-bold">
-        🎉 Congratulations 🥳
-      </Text>
-      <Text className="text-red-500 text-xl mt-2">Setup Complete</Text>
+// import the screens of our app
+import LoginScreen from "./src/screens/LoginScreen";
+import CaseContactListScreen from "./src/screens/CaseContactListScreen";
+import CaseContactDetailScreen from "./src/screens/CaseContactDetailScreen";
+import CaseContactCreateScreen from "./src/screens/CaseContactCreateScreen";
+import AccountScreen from "./src/screens/AccountScreen";
 
-      <Text className="text-red-500 text-xl mt-2">👋🐸</Text>
+// this variable holds the navigation structure of our app
+const switchNavigator = createSwitchNavigator({
+  loginFlow: createStackNavigator({
+    Login: LoginScreen,
+  }),
+  mainFlow: createMaterialBottomTabNavigator({
+    caseContactListFlow: createStackNavigator({
+      CaseContactList: CaseContactListScreen,
+      CaseContactDetail: CaseContactDetailScreen,
+    }),
+    CaseContactCreate: CaseContactCreateScreen,
+    Account: AccountScreen,
+  }),
+});
 
-      <Text className="text-orange-600 text-5xl font-bold mt-2">
-        Tailwind is Awesome! 🤩
-      </Text>
-    </View>
-  );
-};
-
-export default App;
+export default createAppContainer(switchNavigator);
