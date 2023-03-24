@@ -6,12 +6,12 @@ Resolves #XXX2
 
 ### What does this PR solve or do?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 #### What was edited, added, and or created?
 
-- 
-- 
+-
+-
 -
 
 ### How is this tested?
@@ -21,7 +21,9 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 -
 
 ### Screenshot/Video 📷
+
 ### Feelings gif (optional)
+
 What gif best describes your feelings working on this issue? <br />
 Embed with &rarr;
 `![alt text](https://media.giphy.com/media/k1SuVPEuA89S8/giphy.gif)`

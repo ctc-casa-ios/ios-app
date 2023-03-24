@@ -5,7 +5,6 @@
 <p align="center"><a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /></a>&nbsp;<a href="https://github.com/marklawlor/nativewind" target="_blank"><img src="https://img.shields.io/badge/tailwindcss-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white"/></a>&nbsp;<a href="https://reactnative.dev/"><img src="https://img.shields.io/badge/react native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" /></a>&nbsp;<a href="https://jestjs.io/" target="_blank"><img src="https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white" target="_blank"/></a>
 </p>
 
-
 </div>
 
 <!-- ABOUT THE PROJECT -->
@@ -17,15 +16,18 @@ In partnership with [Ruby for Good CASA](https://github.com/rubyforgood/casa) (C
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 Run the following command to ensure node is installed on your device
 
 ```
 npm -v
 ```
+
 If the npm command is not recognized, please install the latest version of [Node.js](https://nodejs.org/en/download/).
 <br />
 <br />
 Install [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
+
 ```
 npm install --global yarn
 ```
@@ -33,7 +35,9 @@ npm install --global yarn
 Additionally, if you have an IOS device, download the [Expo Go](https://apps.apple.com/us/app/expo-go/id982107779) app for previewing. Otherwise, [Snack](https://snack.expo.dev/) is expo's official web-based alternative.
 
 ### Installation
+
 1. Create [your own fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) of this repository and clone that repository to a directory on your local computer
+
 ```
 git clone https://github.com/YOUR_USER_NAME/casa-ios-ctc.git
 ```
@@ -44,9 +48,6 @@ npm i -g expo-cli
 ```
 
 3. Run the application
- ```
- npx expo start
- ```
 
   You should now have a React Native / Typescript app running on
   the localhost address displayed within your terminal. A QR code should also appear.
