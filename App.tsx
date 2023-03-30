@@ -3,6 +3,8 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
+import { Provider as AuthProvider } from './src/context/AuthContext';
+import { setNavigator } from './src/navigationRef';
 // import the screens of our app
 import AccountScreen from './src/screens/AccountScreen';
 import CaseContactCreateScreen from './src/screens/CaseContactCreateScreen';
@@ -25,4 +27,16 @@ const switchNavigator = createSwitchNavigator({
   }),
 });
 
-export default createAppContainer(switchNavigator);
+const App = createAppContainer(switchNavigator);
+
+export default () => {
+  return (
+    <AuthProvider>
+      <App
+        ref={(navigator) => {
+          setNavigator(navigator);
+        }}
+      />
+    </AuthProvider>
+  );
+};
