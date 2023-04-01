@@ -4,19 +4,36 @@ import createDataContext from './createDataContext';
 import authApi from '../api/auth';
 import { navigate } from '../navigationRef';
 
-const authReducer = (state, action) => {
+//
+// typescript
+type State = {
+  isSignedIn: boolean;
+  errorMessage: string;
+  token: string;
+};
+
+type Action =
+  | { type: 'addError'; payload?: string }
+  | { type: 'signin'; payload?: any }
+  | { type: 'signout'; payload?: string };
+
+type Dispatch = (action: Action) => any;
+//
+//
+
+const authReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'addError':
       return { ...state, errorMessage: action.payload };
     case 'signin':
       return { isSignedIn: true, errorMessage: '', token: action.payload };
     case 'signout':
-      return { isSignedIn: false, token: null };
+      return { isSignedIn: false, errorMessage: '', token: null };
   }
 };
 
 // login
-const signin = (dispatch) => {
+const signin = (dispatch: Dispatch) => {
   return async ({ email, password }) => {
     // make api request to sign in with email and password
     // if request succeds, modify our state and say we are authenticated
@@ -40,7 +57,7 @@ const signin = (dispatch) => {
 };
 
 // logout
-const signout = (dispatch) => {
+const signout = (dispatch: Dispatch) => {
   return async () => {
     // modify state so we are signed out
     try {

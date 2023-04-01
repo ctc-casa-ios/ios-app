@@ -1,12 +1,12 @@
 import { NavigationActions } from 'react-navigation';
 
-let navigator;
+let navigator: any;
 
-export const setNavigator = (nav) => {
+export const setNavigator = (nav: object) => {
   navigator = nav;
 };
 
-export const navigate = (routeName, params) => {
+export const navigate = (routeName: string, params: object) => {
   navigator.dispatch(
     NavigationActions.navigate({
       routeName,

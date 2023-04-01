@@ -1,6 +1,23 @@
 import React, { useReducer } from 'react';
 
-export default (reducer, actions, defaultValue) => {
+//
+// typescript
+type State = {
+  isSignedIn: boolean;
+  errorMessage: string;
+  token: string;
+};
+
+type Action =
+  | { type: 'addError'; payload?: string }
+  | { type: 'signin'; payload?: any }
+  | { type: 'signout'; payload?: string };
+
+type Reducer = (state: State, action: Action) => State;
+//
+//
+
+export default (reducer: Reducer, actions: object, defaultValue: State) => {
   const Context = React.createContext({});
 
   const Provider = ({ children }) => {
