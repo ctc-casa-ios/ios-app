@@ -5,8 +5,8 @@ module.exports = function (api) {
       ["babel-preset-expo"],
       ["@babel/preset-env", { targets: { node: "current" } }],
       ["@babel/preset-typescript"],
+      ['@babel/preset-react'],
     ],
-    plugins: ["nativewind/babel"],
-    plugins: ["react-native-reanimated/plugin"],
+    plugins: ["nativewind/babel", "react-native-reanimated/plugin"],
   };
 };

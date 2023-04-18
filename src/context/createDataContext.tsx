@@ -18,7 +18,7 @@ type Reducer = (state: State, action: Action) => State;
 //
 
 export default (reducer: Reducer, actions: object, defaultValue: State) => {
-  const Context = React.createContext({});
+  const Context = React.createContext(null);
 
   const Provider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, defaultValue);

@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
   },
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "exclude": ["node_modules"],
+  "jsx": "react"
 }
