@@ -1,5 +1,6 @@
 // @ts-nocheck
 //import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext } from 'react';
 import { Button, Text, View } from 'react-native';
 import { render, waitFor, screen, fireEvent } from 'test-utils';
@@ -10,14 +11,60 @@ jest.mock('../../api/auth');
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 //jest.mock('../../../@react-native-async-storage');
 
-describe('login', () => {
-  test('sets jwt token in state upon successful login', async () => {
-    const expectedToken = '12345';
+describe('auth flow', () => {
+  beforeEach(() => {
     const email = 'test@123.com';
     const password = 'hehe';
 
-    // populate async storage with mock data
-    //await AsyncStorage.setItem('token', '12345');
+    const TestComponent = ({ email, password }) => {
+      const { state, signin, signout } = useContext(AuthContext);
+
+      return (
+        <View>
+          <Button
+            title="login-btn"
+            onPress={() => {
+              signin({ email, password });
+            }}
+          />
+          <Button
+            title="logout-btn"
+            onPress={() => {
+              signout();
+            }}
+          />
+          {state.isSignedIn && <Text testID="printed-token">{state.token}</Text>}
+        </View>
+      );
+    };
+    render(<TestComponent email={email} password={password} />);
+  });
+
+  test('sets jwt in app state upon successful login', async () => {
+    const expectedToken = '12345';
+
+    fireEvent.press(screen.getByText('login-btn'));
+
+    expect(await screen.findByText(expectedToken)).toBeTruthy();
+    waitFor(async () => {
+      expect(AsyncStorage.setItem).toHaveBeenCalled();
+    });
+  });
+
+  test('removes jwt from app state upon logout', async () => {
+    fireEvent.press(screen.getByText('logout-btn'));
+
+    waitFor(async () => {
+      expect(AsyncStorage.removeItem).toHaveBeenCalled();
+    });
+  });
+});
+
+describe('auth error', () => {
+  test('shows error message upon unsuccessful login', async () => {
+    const expectedErrMsg = 'Something went wrong with sign in.';
+    const email = 'test@122.com';
+    const password = 'hehe';
 
     const TestComponent = ({ email, password }) => {
       const { state, signin } = useContext(AuthContext);
@@ -30,8 +77,8 @@ describe('login', () => {
               signin({ email, password });
             }}
           />
-          <Text testID="signedIn">{state.isSignedIn}</Text>
-          <Text testID="printed-token">{state.token}</Text>
+          {state.isSignedIn && <Text testID="printed-token">{state.token}</Text>}
+          <Text>{state.errorMessage}</Text>
         </View>
       );
     };
@@ -40,10 +87,6 @@ describe('login', () => {
 
     fireEvent.press(screen.getByText('login-btn'));
 
-    //const tokenOutput = await findByTestId('printed-token');
-    expect(await screen.findByText(expectedToken)).toBeTruthy();
-
-    //const signedInOutput = await screen.findByText('true');
-    //expect(signedInOutput).toBeTruthy();
+    expect(await screen.findByText(expectedErrMsg)).toBeTruthy();
   });
 });

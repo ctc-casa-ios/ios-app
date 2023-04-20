@@ -12,7 +12,6 @@ const users = {
 const axios = {
   post: (url, options) => {
     // get email and password
-    console.log(options);
     const { email, password } = options;
     switch (url) {
       case '/signin':
