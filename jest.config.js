@@ -10,4 +10,6 @@ module.exports = {
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
   testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/'],
   cacheDirectory: '.jest/cache',
+  moduleDirectories: ['node_modules', 'utils', __dirname],
+  setupFiles: ['./utils/asyncStorageMock.js'],
 };

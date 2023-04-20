@@ -26,9 +26,13 @@ const authReducer = (state: State, action: Action): State => {
     case 'addError':
       return { ...state, errorMessage: action.payload };
     case 'signin':
+      console.log(action.payload);
+      console.log(state);
       return { isSignedIn: true, errorMessage: '', token: action.payload };
     case 'signout':
       return { isSignedIn: false, errorMessage: '', token: null };
+    default:
+      return state;
   }
 };
 
@@ -39,6 +43,8 @@ const signin = (dispatch: Dispatch) => {
     // if request succeds, modify our state and say we are authenticated
     // if fails, show some error message
     try {
+      console.log(email);
+      console.log(password);
       const response = await authApi.post('/signin', { email, password });
       dispatch({
         type: 'signin',
