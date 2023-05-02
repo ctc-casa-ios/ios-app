@@ -1,14 +1,11 @@
-import React from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
+import React from 'react';
+import { View, StyleSheet, Text, Button } from 'react-native';
 
 const AccountScreen = ({ navigation }) => {
   return (
     <>
       <Text style={{ fontSize: 48 }}>AccountScreen</Text>
-      <Button
-        title="Log out"
-        onPress={() => navigation.navigate("Login")}
-      />
+      <Button title="Log out" onPress={() => navigation.navigate('Login')} />
     </>
   );
 };

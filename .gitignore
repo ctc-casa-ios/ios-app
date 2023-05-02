@@ -63,8 +63,5 @@ buck-out/
 .expo/*
 web-build/
 
-# jest
+# test
 .jest
-
-# Yarn
-yarn.lock
