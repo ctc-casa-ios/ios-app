@@ -40,13 +40,21 @@ const signin = (dispatch: Dispatch) => {
     // make api request to sign in with email and password
     // if request succeds, modify our state and say we are authenticated
     // if fails, show some error message
+    const params = {
+      user: {
+        email,
+        password,
+      },
+    };
     try {
-      const response = await authApi.post('/signin', { email, password });
+      const response = await authApi.post('/users/sign_in', params);
+      console.log(response.headers);
+      console.log(response.headers.authorization);
       dispatch({
         type: 'signin',
-        payload: response.data.token,
+        payload: response.headers.authorization,
       });
-      await AsyncStorage.setItem('token', response.data.token);
+      await AsyncStorage.setItem('token', response.headers.authorization);
       navigate('mainFlow', {});
     } catch (err) {
       dispatch({
