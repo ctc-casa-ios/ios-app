@@ -11,9 +11,11 @@ import CaseContactCreateScreen from './src/screens/CaseContactCreateScreen';
 import CaseContactDetailScreen from './src/screens/CaseContactDetailScreen';
 import CaseContactListScreen from './src/screens/CaseContactListScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 
 // this variable holds the navigation structure of our app
 const switchNavigator = createSwitchNavigator({
+  LoadingAuth: ResolveAuthScreen,
   loginFlow: createStackNavigator({
     Login: LoginScreen,
   }),
