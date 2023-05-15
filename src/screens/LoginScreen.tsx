@@ -12,6 +12,8 @@ const StyledImage = styled(Image);
 const casaLogo = require('../assets/casaLogo.png');
 const rfgLogo = require('../assets/rfgLogo.png');
 
+console.log('WORKFLOW TEST');
+
 const LoginScreen = ({ navigation }) => {
   return (
     <StyledView className="justify-between items-center gap-3 flex-1 bg-[#345073]">
