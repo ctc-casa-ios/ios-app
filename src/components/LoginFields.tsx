@@ -1,10 +1,15 @@
 // Refactored TypeScript React-Native Component
 import React, { useState } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, StyleSheet, View } from 'react-native';
+import { styled } from 'nativewind';
 
-interface LoginFieldProps {}
+interface LoginFieldProps {
+  style?: StyleSheet.NamedStyles<any>;
+}
 
-const LoginField: React.FC<LoginFieldProps> = () => {
+const StyledTextInput = styled(TextInput);
+
+const LoginField: React.FC<LoginFieldProps> = ({ style }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -18,13 +23,25 @@ const LoginField: React.FC<LoginFieldProps> = () => {
 
   return (
     <>
-      <TextInput placeholder="Enter your email" onChangeText={handleEmailChange} />
-
-      <TextInput
-        placeholder="Enter your password"
-        secureTextEntry={true}
-        onChangeText={handlePasswordChange}
-      />
+      <View>
+        <StyledTextInput
+          className="pl-4 text-white"
+          style={style}
+          placeholder="Email"
+          placeholderTextColor={'white'}
+          onChangeText={handleEmailChange}
+        />
+      </View>
+      <View>
+        <StyledTextInput
+          className="pl-4 text-white"
+          style={style}
+          placeholder="Password"
+          placeholderTextColor={'white'}
+          secureTextEntry={true}
+          onChangeText={handlePasswordChange}
+        />
+      </View>
     </>
   );
 };
