@@ -83,6 +83,13 @@ const signout = (dispatch: Dispatch) => {
   return async () => {
     // modify state so we are signed out
     try {
+      const token = await AsyncStorage.getItem('token');
+      const config = {
+        headers: {
+          Authorization: token,
+        },
+      };
+      const response = await authApi.get('/users/sign_out', config);
       await AsyncStorage.removeItem('token');
       dispatch({
         type: 'signout',

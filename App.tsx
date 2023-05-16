@@ -20,7 +20,6 @@ NativeWindStyleSheet.setOutput({
   default: 'native',
 });
 
-
 // this variable holds the navigation structure of our app
 const switchNavigator = createSwitchNavigator({
   LoadingAuth: ResolveAuthScreen,
