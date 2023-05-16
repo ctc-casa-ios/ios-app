@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:react-native/all'],
+  extends: ['eslint:recommended', 'plugin:react-native/all', 'plugin:react-native-a11y'],
   parserOptions: {
     ecmaVersion: 2021,
     sourceType: 'module',
