@@ -1,3 +1,9 @@
 module.exports = {
-  extends: 'universe/native',
+  extends: ['eslint:recommended'],
+  parserOptions: {
+    ecmaVersion: 2021,
+  },
+  rules: {
+    'no-console': 'error',
+  },
 };
