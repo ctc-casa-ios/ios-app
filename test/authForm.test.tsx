@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 
-import LoginField from '../src/components/LoginFields';
+import AuthForm from '../src/components/AuthForm';
 
-describe('LoginField', () => {
+describe('AuthForm', () => {
   it('renders correctly', () => {
-    const { getByPlaceholderText } = render(<LoginField />);
+    const { getByPlaceholderText } = render(
+      <AuthForm submitButtonText="Log in" onSubmit={() => {}} />
+    );
     const emailInput = getByPlaceholderText('Email');
     const passwordInput = getByPlaceholderText('Password');
     expect(emailInput).toBeDefined();
@@ -13,7 +15,9 @@ describe('LoginField', () => {
   });
 
   it('hides password input', () => {
-    const { getByPlaceholderText } = render(<LoginField />);
+    const { getByPlaceholderText } = render(
+      <AuthForm submitButtonText="Log in" onSubmit={() => {}} />
+    );
     const passwordInput = getByPlaceholderText('Password');
     fireEvent.changeText(passwordInput, 'password');
     expect(passwordInput.props.secureTextEntry).toBe(true);
