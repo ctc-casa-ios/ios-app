@@ -20,8 +20,8 @@ const LoginScreen = ({ navigation }) => {
   return (
     <StyledView className="justify-between items-center gap-3 flex-1 bg-[#345073]">
       <NavigationEvents onWillFocus={clearErrorMessage} />
-      <StyledView className="flex h-1/3 w-screen items-center">
-        <StyledImage className="w-20 h-20 mt-40" source={casaLogo} />
+      <StyledView className="flex flex-1 flex-col h-1/3 w-screen justify-end">
+        <StyledImage className="w-20 h-20 self-center" source={casaLogo} />
       </StyledView>
       <StyledView className="justify-start items-center gap-4 flex h-1/3 w-screen bg-[#345073] pb-20">
         <StyledAuthForm

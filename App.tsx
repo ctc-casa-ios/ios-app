@@ -24,7 +24,12 @@ NativeWindStyleSheet.setOutput({
 const switchNavigator = createSwitchNavigator({
   LoadingAuth: ResolveAuthScreen,
   loginFlow: createStackNavigator({
-    Login: LoginScreen,
+    Login: {
+      screen: LoginScreen,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
   }),
   mainFlow: createMaterialBottomTabNavigator({
     caseContactListFlow: createStackNavigator({
