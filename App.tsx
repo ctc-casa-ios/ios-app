@@ -20,7 +20,12 @@ NativeWindStyleSheet.setOutput({
 // this variable holds the navigation structure of our app
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
-    Login: LoginScreen,
+    Login: {
+      screen: LoginScreen,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
   }),
   mainFlow: createMaterialBottomTabNavigator({
     caseContactListFlow: createStackNavigator({
