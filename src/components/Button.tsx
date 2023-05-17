@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import handlePress from '../helper/onPressHelper';
-import { StyleSheet } from 'react-native';
 import { styled } from 'nativewind';
 
 interface Props {

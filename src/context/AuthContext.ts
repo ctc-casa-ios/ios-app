@@ -15,7 +15,8 @@ type State = {
 type Action =
   | { type: 'addError'; payload?: string }
   | { type: 'signin'; payload?: any }
-  | { type: 'signout'; payload?: string };
+  | { type: 'signout'; payload?: string }
+  | { type: 'clearErrMsg'; payload: void };
 
 type Dispatch = (action: Action) => any;
 //
@@ -29,6 +30,8 @@ const authReducer = (state: State, action: Action): State => {
       return { isSignedIn: true, errorMessage: '', token: action.payload };
     case 'signout':
       return { isSignedIn: false, errorMessage: '', token: null };
+    case 'clearErrMsg':
+      return { ...state, errorMessage: '' };
     default:
       return state;
   }
@@ -101,8 +104,15 @@ const signout = (dispatch: Dispatch) => {
   };
 };
 
+// clear error message
+const clearErrorMessage = (dispatch) => {
+  return () => {
+    dispatch({ type: 'clearErrMsg' });
+  };
+};
+
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signin, signout, tryLocalSignin },
+  { signin, signout, tryLocalSignin, clearErrorMessage },
   { isSignedIn: false, errorMessage: '', token: null }
 );
