@@ -1,7 +1,7 @@
 // Refactored TypeScript React-Native Component
+import { styled } from 'nativewind';
 import React, { useState } from 'react';
 import { TextInput, StyleSheet, View } from 'react-native';
-import { styled } from 'nativewind';
 
 interface LoginFieldProps {
   style?: StyleSheet.NamedStyles<any>;
@@ -28,7 +28,7 @@ const LoginField: React.FC<LoginFieldProps> = ({ style }) => {
           className="pl-4 text-white"
           style={style}
           placeholder="Email"
-          placeholderTextColor={'white'}
+          placeholderTextColor="white"
           onChangeText={handleEmailChange}
         />
       </View>
@@ -37,8 +37,8 @@ const LoginField: React.FC<LoginFieldProps> = ({ style }) => {
           className="pl-4 text-white"
           style={style}
           placeholder="Password"
-          placeholderTextColor={'white'}
-          secureTextEntry={true}
+          placeholderTextColor="white"
+          secureTextEntry
           onChangeText={handlePasswordChange}
         />
       </View>
