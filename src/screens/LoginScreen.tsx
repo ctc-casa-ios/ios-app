@@ -1,6 +1,7 @@
+import { styled } from 'nativewind';
 import React from 'react';
 import { View, Image } from 'react-native';
-import { styled } from 'nativewind';
+
 import Button from '../components/Button';
 import LoginField from '../components/LoginFields';
 

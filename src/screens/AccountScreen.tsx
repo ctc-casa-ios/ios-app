@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { StyleSheet, Text, Button } from 'react-native';
 
 const AccountScreen = ({ navigation }) => {
   return (
@@ -9,7 +9,5 @@ const AccountScreen = ({ navigation }) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default AccountScreen;
