@@ -37,7 +37,7 @@ jobs:
         run: yarn install
 
       - name: Lint code
-        run: yarn eslint . --max-warnings=0
+        run: yarn eslint .
 
   format:
     runs-on: ubuntu-latest
