@@ -1,16 +1,12 @@
+import { styled } from 'nativewind';
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import handlePress from '../helper/onPressHelper';
-import { styled } from 'nativewind';
 
 interface Props {
   title: string;
   onPress: () => void;
   style?: StyleSheet.NamedStyles<any>;
 }
-
-const StyledTouchableOpacity = styled(TouchableOpacity);
-const StyledText = styled(TouchableOpacity);
 
 const Button: React.FC<Props> = ({ title, onPress, style }) => {
   return (

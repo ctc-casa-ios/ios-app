@@ -1,3 +1,4 @@
+import { NativeWindStyleSheet } from 'nativewind';
 import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
@@ -13,8 +14,6 @@ import CaseContactListScreen from './src/screens/CaseContactListScreen';
 import LoginScreen from './src/screens/LoginScreen';
 
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
-
-import { NativeWindStyleSheet } from 'nativewind';
 
 NativeWindStyleSheet.setOutput({
   default: 'native',

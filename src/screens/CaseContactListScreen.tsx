@@ -16,6 +16,4 @@ const CaseContactListScreen = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({});
-
 export default CaseContactListScreen;

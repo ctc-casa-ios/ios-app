@@ -1,6 +1,7 @@
 // Jest Test
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
+import React from 'react';
+
 import Button from '../src/components/Button';
 import 'jest';
 
