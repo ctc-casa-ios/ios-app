@@ -27,14 +27,24 @@ const switchNavigator = createSwitchNavigator({
       },
     },
   }),
-  mainFlow: createMaterialBottomTabNavigator({
-    caseContactListFlow: createStackNavigator({
-      CaseContactList: CaseContactListScreen,
-      CaseContactDetail: CaseContactDetailScreen,
-    }),
-    CaseContactCreate: CaseContactCreateScreen,
-    Account: AccountScreen,
+  // mainFlow: createMaterialBottomTabNavigator({
+  caseContactListFlow: createStackNavigator({
+    CaseContactList: {
+      screen: CaseContactListScreen,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
+    CaseContactDetail: {
+      screen: CaseContactDetailScreen,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
   }),
+  CaseContactCreate: CaseContactCreateScreen,
+  Account: AccountScreen,
+  // }),
 });
 
 const App = createAppContainer(switchNavigator);
