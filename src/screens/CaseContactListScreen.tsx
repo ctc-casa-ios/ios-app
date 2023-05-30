@@ -53,7 +53,7 @@ const CaseContactListScreen = ({ navigation }) => {
           className="flex bg-[#ea5a4e] text-white rounded-3xl w-[120] h-[40]"
           title="Account"
           titleColor="white"
-          onPress={() => navigation.navigate('CaseContactList')}
+          onPress={() => navigation.navigate('AccountScreen')}
         />
       </StyledView>
     </StyledView>
