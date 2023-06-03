@@ -4,11 +4,10 @@ import tw from 'tailwind-react-native-classnames';
 
 import { View, Text, FlatList } from 'react-native';
 
-import Button from '../components/Button';
+import BottomTabNavigator from '../components/BottomTabNavigator';
 import CaseContactListCard from '../components/CaseContactListCard';
 
 const StyledView = styled(View);
-const StyledButton = styled(Button);
 const StyledText = styled(Text);
 const StyledFlatList = styled(FlatList);
 
@@ -36,26 +35,10 @@ const CaseContactListScreen = ({ navigation }) => {
           />
         </StyledView>
       </StyledView>
-      <StyledView className="flex-row pb-10 items-center justify-around h-1/5 w-screen bg-[#345073]">
-        <StyledButton
-          className="flex bg-[#ea5a4e] text-white rounded-3xl w-[120] h-[40]"
-          title="My Cases"
-          titleColor="white"
-          onPress={() => navigation.navigate('CaseContactList')}
-        />
-        <StyledButton
-          className="flex bg-[#ea5a4e] text-white rounded-3xl w-[90] h-[40]"
-          title="Create"
-          titleColor="white"
-          onPress={() => navigation.navigate('CaseContactList')}
-        />
-        <StyledButton
-          className="flex bg-[#ea5a4e] text-white rounded-3xl w-[120] h-[40]"
-          title="Account"
-          titleColor="white"
-          onPress={() => navigation.navigate('AccountScreen')}
-        />
-      </StyledView>
+      <BottomTabNavigator
+        className="flex-row pb-10 items-center justify-around h-1/5 w-screen bg-[#345073]"
+        navigation={navigation}
+      />
     </StyledView>
   );
 };
