@@ -10,7 +10,7 @@ const StyledView = styled(View);
 const StyledButton = styled(Button);
 const StyledText = styled(Text);
 
-const CaseContactDetailCard = ({ item, navigation }) => {
+const CaseContactListCard = ({ item, navigation }) => {
   return (
     <TouchableOpacity style={tw`py-3`}>
       <StyledButton
@@ -24,4 +24,4 @@ const CaseContactDetailCard = ({ item, navigation }) => {
   );
 };
 
-export default CaseContactDetailCard;
+export default CaseContactListCard;
