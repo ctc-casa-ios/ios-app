@@ -26,7 +26,7 @@ const BottomTabNavigator: React.FC<Props> = ({ style, navigation }) => {
         className="flex bg-[#ea5a4e] text-white rounded-3xl w-[90] h-[40]"
         title="Create"
         titleColor="white"
-        onPress={() => navigation.navigate('CaseContactList')}
+        onPress={() => navigation.navigate('CaseContactCreateScreen')}
       />
       <StyledButton
         className="flex bg-[#ea5a4e] text-white rounded-3xl w-[120] h-[40]"

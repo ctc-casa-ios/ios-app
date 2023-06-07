@@ -42,7 +42,14 @@ const switchNavigator = createSwitchNavigator({
       },
     },
   }),
-  CaseContactCreate: CaseContactCreateScreen,
+  CaseContactCreateFlow: createStackNavigator({
+    CaseContactCreateScreen: {
+      screen: CaseContactCreateScreen,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
+  }),
   AccountFlow: createStackNavigator({
     AccountScreen: {
       screen: AccountScreen,
