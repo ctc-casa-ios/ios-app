@@ -49,6 +49,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
       <StyledButton
         className="flex bg-[#ea5a4e] text-white rounded-3xl w-40 h-10"
         title={submitButtonText}
+        titleColor="white"
         onPress={() => onSubmit({ email, password })}
       />
     </>

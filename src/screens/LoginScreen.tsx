@@ -27,7 +27,7 @@ const LoginScreen = ({ navigation }) => {
         <StyledAuthForm
           className="flex text-white border-white border border-2 border-rounded rounded-3xl w-[300] h-10"
           errorMessage={state.errorMessage}
-          submitButtonText="Log in"
+          submitButtonText="Sign in"
           onSubmit={signin}
         />
       </StyledView>
