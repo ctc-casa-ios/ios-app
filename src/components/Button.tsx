@@ -5,21 +5,17 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 interface Props {
   title: string;
   onPress: () => void;
-  style?: StyleSheet.NamedStyles<any>;
+  style?: any;
+  titleColor?: string;
 }
 
-const Button: React.FC<Props> = ({ title, onPress, style }) => {
+const Button: React.FC<Props> = ({ title, onPress, style, titleColor }) => {
   return (
-    <>
-      <TouchableOpacity
-        className="flex justify-center items-center"
-        style={style}
-        onPress={onPress}>
-        <Text className="text-white" onPress={onPress}>
-          {title}
-        </Text>
-      </TouchableOpacity>
-    </>
+    <TouchableOpacity className="flex justify-center items-center" style={style} onPress={onPress}>
+      <Text className="text-xl" style={{ color: titleColor, fontWeight: 'bold' }} onPress={onPress}>
+        {title}
+      </Text>
+    </TouchableOpacity>
   );
 };
 
