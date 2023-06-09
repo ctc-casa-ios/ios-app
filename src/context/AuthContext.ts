@@ -42,7 +42,8 @@ const tryLocalSignin = (dispatch: Dispatch) => {
     const token = await AsyncStorage.getItem('token');
     if (token) {
       dispatch({ type: 'signin', payload: token });
-      navigate('mainFlow', {});
+      //navigate('mainFlow', {});
+      navigate('caseContactListFlow', {});
     } else {
       navigate('loginFlow', {});
     }
@@ -70,7 +71,8 @@ const signin = (dispatch: Dispatch) => {
         payload: response.headers.authorization,
       });
       await AsyncStorage.setItem('token', response.headers.authorization);
-      navigate('mainFlow', {});
+      //navigate('mainFlow', {});
+      navigate('caseContactListFlow', {});
     } catch (err) {
       dispatch({
         type: 'addError',
