@@ -1,10 +1,10 @@
-import React from 'react';
 import { styled } from 'nativewind';
-
+import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 
-import Button from '../components/Button';
 import BottomTabNavigator from '../components/BottomTabNavigator';
+import Button from '../components/Button';
+import { Context as AuthContext } from '../context/AuthContext';
 
 const StyledView = styled(View);
 const StyledButton = styled(Button);
@@ -21,9 +21,9 @@ const AccountScreen = ({ navigation }) => {
         <StyledText className="flex text-2xl font-bold">{`volunteer@casa.com`}</StyledText>
         <StyledButton
           className="flex bg-[#ea5a4e] text-white rounded-3xl w-[160] h-[40]"
-          title="Logout"
+          title="Sign out"
           titleColor="white"
-          onPress={() => navigation.navigate('Login')}
+          onPress={signout}
         />
       </StyledView>
       <BottomTabNavigator
