@@ -11,7 +11,7 @@ jest.mock('../../api/auth');
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 //jest.mock('../../../@react-native-async-storage');
 
-describe('auth flow', () => {
+describe('auth context', () => {
   beforeEach(() => {
     const email = 'test@123.com';
     const password = 'hehe';
