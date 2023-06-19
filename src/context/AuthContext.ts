@@ -15,7 +15,8 @@ type State = {
 type Action =
   | { type: 'addError'; payload?: string }
   | { type: 'signin'; payload?: any }
-  | { type: 'signout'; payload?: string };
+  | { type: 'signout'; payload?: string }
+  | { type: 'clearErrMsg'; payload: void };
 
 type Dispatch = (action: Action) => any;
 //
@@ -29,9 +30,24 @@ const authReducer = (state: State, action: Action): State => {
       return { isSignedIn: true, errorMessage: '', token: action.payload };
     case 'signout':
       return { isSignedIn: false, errorMessage: '', token: null };
+    case 'clearErrMsg':
+      return { ...state, errorMessage: '' };
     default:
       return state;
   }
+};
+
+const tryLocalSignin = (dispatch: Dispatch) => {
+  return async () => {
+    const token = await AsyncStorage.getItem('token');
+    if (token) {
+      dispatch({ type: 'signin', payload: token });
+      //navigate('mainFlow', {});
+      navigate('caseContactListFlow', {});
+    } else {
+      navigate('loginFlow', {});
+    }
+  };
 };
 
 // login
@@ -40,14 +56,23 @@ const signin = (dispatch: Dispatch) => {
     // make api request to sign in with email and password
     // if request succeds, modify our state and say we are authenticated
     // if fails, show some error message
+    const params = {
+      user: {
+        email,
+        password,
+      },
+    };
     try {
-      const response = await authApi.post('/signin', { email, password });
+      const response = await authApi.post('/users/sign_in', params);
+      console.log(response.headers);
+      console.log(response.headers.authorization);
       dispatch({
         type: 'signin',
-        payload: response.data.token,
+        payload: response.headers.authorization,
       });
-      await AsyncStorage.setItem('token', response.data.token);
-      navigate('mainFlow', {});
+      await AsyncStorage.setItem('token', response.headers.authorization);
+      //navigate('mainFlow', {});
+      navigate('caseContactListFlow', {});
     } catch (err) {
       dispatch({
         type: 'addError',
@@ -63,6 +88,13 @@ const signout = (dispatch: Dispatch) => {
   return async () => {
     // modify state so we are signed out
     try {
+      const token = await AsyncStorage.getItem('token');
+      const config = {
+        headers: {
+          Authorization: token,
+        },
+      };
+      const response = await authApi.get('/users/sign_out', config);
       await AsyncStorage.removeItem('token');
       dispatch({
         type: 'signout',
@@ -74,8 +106,15 @@ const signout = (dispatch: Dispatch) => {
   };
 };
 
+// clear error message
+const clearErrorMessage = (dispatch) => {
+  return () => {
+    dispatch({ type: 'clearErrMsg' });
+  };
+};
+
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signin, signout },
+  { signin, signout, tryLocalSignin, clearErrorMessage },
   { isSignedIn: false, errorMessage: '', token: null }
 );
