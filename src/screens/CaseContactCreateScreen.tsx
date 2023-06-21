@@ -115,11 +115,8 @@ const CaseContactCreateScreen = ({ navigation }) => {
     const formattedDate = currentDate.toISOString();
     const formattedCurrentDate = formattedDate.split('T')[0];
     setShow(false);
-    console.log('currentdate:', formattedCurrentDate)
-    // console.log('formatteddate:',formattedCurrentDate)
     const rightDate = decreaseLastTwoDigits(formattedCurrentDate.toString())
     dispatch(dateState(rightDate));
-    // console.log('datestate',date)
   };
 
   const handleMilesChange = (text) => {
@@ -136,9 +133,7 @@ const CaseContactCreateScreen = ({ navigation }) => {
   const handleHoursChange = (text) => {
     // Remove any non-numeric characters from the input
     const formattedText = text.replace(/[^0-9]/g, '');
-    // console.log(formattedText)
     dispatch(hoursState(formattedText))
-    console.log(hours)
   };
 
   const handleMinutesChange = (text) => {

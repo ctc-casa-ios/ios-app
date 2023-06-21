@@ -24,13 +24,18 @@ NativeWindStyleSheet.setOutput({
 const switchNavigator = createSwitchNavigator({
   LoadingAuth: ResolveAuthScreen,
   loginFlow: createStackNavigator({
- 
     Login: {
       screen: LoginScreen,
       navigationOptions: {
         headerShown: false,
       },
     },
+  },{
+    defaultNavigationOptions: {
+    ...TransitionPresets.ModalSlideFromBottomIOS,
+  }}),
+  // mainFlow: createMaterialBottomTabNavigator({
+  caseContactListFlow: createStackNavigator({
     CaseContactList: {
       screen: CaseContactListScreen,
       navigationOptions: {
@@ -43,24 +48,33 @@ const switchNavigator = createSwitchNavigator({
         headerShown: false,
       },
     },
+  },{
+    defaultNavigationOptions: {
+    ...TransitionPresets.ModalSlideFromBottomIOS,
+  }}),
+  CaseContactCreateFlow: createStackNavigator({
     CaseContactCreateScreen: {
       screen: CaseContactCreateScreen,
       navigationOptions: {
         headerShown: false,
       },
     },
+  },{
+    defaultNavigationOptions: {
+    ...TransitionPresets.ModalSlideFromBottomIOS,
+  }}),
+  AccountFlow: createStackNavigator({
     AccountScreen: {
       screen: AccountScreen,
       navigationOptions: {
         headerShown: false,
       },
     },
-    
   },{
     defaultNavigationOptions: {
     ...TransitionPresets.ModalSlideFromBottomIOS,
   }}),
-  
+  // }),
 });
 
 const App = createAppContainer(switchNavigator);
