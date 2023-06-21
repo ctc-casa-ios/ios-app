@@ -75,6 +75,8 @@ const switchNavigator = createSwitchNavigator({
     ...TransitionPresets.ModalSlideFromBottomIOS,
   }}),
   // }),
+},{
+  initialRouteName: 'loginFlow',
 });
 
 const App = createAppContainer(switchNavigator);
