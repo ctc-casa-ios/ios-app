@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { styled } from 'nativewind';
 
 import { View, Text, TextInput, ScrollView, Alert } from 'react-native';
@@ -8,6 +8,10 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import Button from '../components/Button';
 import BottomTabNavigator from '../components/BottomTabNavigator';
 
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment, check1, check2, check3, check4, check5, check6, check7, check8, check9, check10, check11, milesState, notesState, hoursState, minutesState, dateState  } from '../slices/createScreenSlice'
+
+
 const StyledView = styled(View);
 const StyledButton = styled(Button);
 const StyledText = styled(Text);
@@ -15,82 +19,50 @@ const StyledTextInput = styled(TextInput);
 const StyledScrollView = styled(ScrollView);
 
 const CaseContactCreateScreen = ({ navigation }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
-  const [date, setDate] = useState(new Date());
+  const dispatch = useDispatch()
+
+  // const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
-  const [miles, setMiles] = useState(0);
-  const [notes, setNotes] = useState('');
+  
 
-  const [checkboxes1, setCheckboxes1] = useState([
-    { id: 1, title: 'Case 1', checked: false },
-    { id: 2, title: 'Case 2', checked: false },
-    { id: 3, title: 'Case 3', checked: false },
-    { id: 4, title: 'Case 4', checked: false },
-  ]);
-  const [checkboxesCasa, setCheckboxesCasa] = useState([
-    { id: 5, title: 'Supervisor', checked: false },
-    { id: 6, title: 'Youth', checked: false },
-  ]);
-  const [checkboxesEducation, setCheckboxesEducation] = useState([
-    { id: 7, title: 'Guidance Counselor', checked: false },
-    { id: 8, title: 'IEP Team', checked: false },
-    { id: 9, title: 'School', checked: false },
-    { id: 10, title: 'Teacher', checked: false },
-  ]);
-  const [checkboxesFamily, setCheckboxesFamily] = useState([
-    { id: 11, title: 'Parent', checked: false },
-    { id: 12, title: 'Aunt Uncle or Cousin', checked: false },
-    { id: 13, title: 'Fictive Kin', checked: false },
-    { id: 14, title: 'Grandparent', checked: false },
-    { id: 15, title: 'Other Family', checked: false },
-    { id: 16, title: 'Sibling', checked: false },
-  ]);
-  const [checkboxesHealth, setCheckboxesHealth] = useState([
-    { id: 17, title: 'Medical Professional', checked: false },
-    { id: 18, title: 'Mental Health Therapist', checked: false },
-    { id: 19, title: 'Other Therapist', checked: false },
-    { id: 20, title: 'Psychiatric Practitioner', checked: false },
-  ]);
-  const [checkboxesLegal, setCheckboxesLegal] = useState([
-    { id: 21, title: 'Attorney', checked: false },
-    { id: 22, title: 'Court', checked: false },
-  ]);
-  const [checkboxesPlacement, setCheckboxesPlacement] = useState([
-    { id: 23, title: 'Caregiver Family', checked: false },
-    { id: 24, title: 'Foster Parent', checked: false },
-    { id: 25, title: 'Therapeutic Agency Worker', checked: false },
-  ]);
-  const [checkboxesSS, setCheckboxesSS] = useState([
-    { id: 26, title: 'Social Worker', checked: false },
-  ]);
+  const textInputRef = useRef(null);
 
-  const [checkboxes3a, setCheckboxes3a] = useState([
-    { id: 27, title: 'Yes', checked: false },
-    { id: 28, title: 'No', checked: false },
-  ]);
+  const currentPage = useSelector(state => state.createScreen.currentPage)
 
-  const [checkboxes3b, setCheckboxes3b] = useState([
-    { id: 29, title: 'In Person', checked: false },
-    { id: 30, title: 'Text/Email', checked: false },
-    { id: 31, title: 'Video', checked: false },
-    { id: 32, title: 'Voice Only', checked: false },
-    { id: 33, title: 'Letter', checked: false },
-  ]);
+  const miles = useSelector(state => state.createScreen.miles)
 
-  const [checkboxes4b, setCheckboxes4b] = useState([
-    { id: 34, title: 'Yes', checked: false },
-    { id: 35, title: 'No', checked: false },
-  ]);
+  const hours = useSelector(state => state.createScreen.hours)
+  const minutes = useSelector(state => state.createScreen.minutes)
+
+  const notes = useSelector(state => state.createScreen.notes)
+
+  const date = useSelector(state => state.createScreen.date)
+
+
+  const checkboxes1 = useSelector(state => state.createScreen.checkboxes1)
+  const checkboxesCasa = useSelector(state => state.createScreen.checkboxesCasa)
+  const checkboxesEducation = useSelector(state => state.createScreen.checkboxesEducation)
+  const checkboxesFamily = useSelector(state => state.createScreen.checkboxesFamily)
+  const checkboxesHealth = useSelector(state => state.createScreen.checkboxesHealth)
+  const checkboxesLegal = useSelector(state => state.createScreen.checkboxesLegal)
+  const checkboxesPlacement = useSelector(state => state.createScreen.checkboxesPlacement)
+  const checkboxesSS = useSelector(state => state.createScreen.checkboxesSS)
+  const checkboxes3a = useSelector(state => state.createScreen.checkboxes3a)
+  const checkboxes3b = useSelector(state => state.createScreen.checkboxes3b)
+  const checkboxes4b = useSelector(state => state.createScreen.checkboxes4b)
 
   const [formData, setFormData] = useState({});
 
   const handleNextPage = () => {
-    setCurrentPage(currentPage + 1);
+    // setCurrentPage(currentPage + 1);
+    dispatch(increment())
   };
 
   const handlePreviousPage = () => {
-    setCurrentPage(currentPage - 1);
+    // setCurrentPage(currentPage - 1);
+    dispatch(decrement())
   };
 
   const handleInputChange = (name, value) => {
@@ -99,86 +71,86 @@ const CaseContactCreateScreen = ({ navigation }) => {
 
   const handleCheckboxChange = (checkboxId) => {
     if (checkboxId < 5) {
-      setCheckboxes1((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check1(checkboxId))
+      
     } else if (checkboxId < 7) {
-      setCheckboxesCasa((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check2(checkboxId))
     } else if (checkboxId < 11) {
-      setCheckboxesEducation((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check3(checkboxId))
     } else if (checkboxId < 17) {
-      setCheckboxesFamily((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check4(checkboxId))
     } else if (checkboxId < 21) {
-      setCheckboxesHealth((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check5(checkboxId))
     } else if (checkboxId < 23) {
-      setCheckboxesLegal((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check6(checkboxId))
     } else if (checkboxId < 26) {
-      setCheckboxesPlacement((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check7(checkboxId))
     } else if (checkboxId === 26) {
-      setCheckboxesSS((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check8(checkboxId))
     } else if (checkboxId < 29) {
-      setCheckboxesPlacement((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check9(checkboxId))
     } else if (checkboxId < 34) {
-      setCheckboxesPlacement((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
+      dispatch(check10(checkboxId))
     } else if (checkboxId < 36) {
-      setCheckboxesPlacement((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === checkboxId ? { ...checkbox, checked: !checkbox.checked } : checkbox
-        )
-      );
-    }
+      dispatch(check11(checkboxId))
+    } 
   };
+
+  function decreaseLastTwoDigits(dateString) {
+    const [year, month, day] = dateString.split('-');
+    const lastTwoDigits = parseInt(day.substring(day.length - 2));
+  
+    // Decrease the last two digits by 1
+    const decreasedDigits = lastTwoDigits - 1;
+  
+    // Construct the updated date string with decreased digits
+    const updatedDateString = `${year}-${month}-${decreasedDigits.toString().padStart(2, '0')}`;
+  
+    return updatedDateString;
+  }
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
-    const formattedCurrentDate = currentDate.toISOString().split('T')[0].toString();
+    
+    const formattedDate = currentDate.toISOString();
+    const formattedCurrentDate = formattedDate.split('T')[0];
     setShow(false);
-    console.log(formattedCurrentDate);
-    setDate(formattedCurrentDate);
+    const rightDate = decreaseLastTwoDigits(formattedCurrentDate.toString())
+    dispatch(dateState(rightDate));
   };
 
-  const handleTextChange = (text) => {
+  const handleMilesChange = (text) => {
     // Remove any non-numeric characters from the input
     const formattedText = text.replace(/[^0-9]/g, '');
-    setMiles(formattedText);
+    dispatch(milesState(formattedText))
+  };
+
+  const handleNotesChange = (text) => {
+    
+    dispatch(notesState(text))
+  };
+
+  const handleHoursChange = (text) => {
+    // Remove any non-numeric characters from the input
+    const formattedText = text.replace(/[^0-9]/g, '');
+    dispatch(hoursState(formattedText))
+  };
+
+  const handleMinutesChange = (text) => {
+    // Remove any non-numeric characters from the input
+    if (text < 61) {
+      const formattedText = text.replace(/[^0-9]/g, '');
+
+      dispatch(minutesState(formattedText))
+    } else {
+      
+      Alert.alert('Invalid input', 'Please enter a value between 0 and 60', [
+        { text: 'OK', onPress: () => {dispatch(minutesState('')); if (textInputRef.current) {
+          textInputRef.current.clear();
+        }} }
+      ]);
+      
+    }
   };
 
   const handleSubmit = () => {
@@ -314,7 +286,7 @@ const CaseContactCreateScreen = ({ navigation }) => {
                 {show && (
                   <DateTimePicker
                     testID="dateTimePicker"
-                    value={date}
+                    value={new Date(date)}
                     maximumDate={new Date()}
                     mode="date"
                     is24Hour={true}
@@ -326,23 +298,26 @@ const CaseContactCreateScreen = ({ navigation }) => {
                 </StyledText>
               </StyledView>
 
-              <StyledText className="text-xl pt-2 text-center">d. Duration of meating</StyledText>
+              <StyledText className="text-xl pt-2 text-center">d. Duration of meeting</StyledText>
               <StyledView className="flex p-3 flex-row">
                 <StyledTextInput
                   className="flex bg-white p-1 self-center text-2xl"
                   placeholder="Enter a Number"
-                  onChangeText={handleTextChange}
+                  onChangeText={handleHoursChange}
                   keyboardType="numeric"
+                  value={hours}
                 />
                 <StyledText className="text-xl pt-2 text-center"> hour(s)</StyledText>
               </StyledView>
 
               <StyledView className="flex p-3 flex-row">
                 <StyledTextInput
+                ref={textInputRef}
                   className="flex bg-white p-1 self-center text-2xl"
                   placeholder="Enter a Number"
-                  onChangeText={handleTextChange}
+                  onChangeText={handleMinutesChange}
                   keyboardType="numeric"
+                  value={minutes}
                 />
                 <StyledText className="text-xl pt-2 text-center"> minute(s)</StyledText>
               </StyledView>
@@ -353,8 +328,9 @@ const CaseContactCreateScreen = ({ navigation }) => {
               <StyledTextInput
                 className="flex bg-white p-1 self-center text-2xl"
                 placeholder="Enter a Number"
-                onChangeText={handleTextChange}
+                onChangeText={handleMilesChange}
                 keyboardType="numeric"
+                value={miles}
               />
 
               <StyledText className="text-xl pt-2 text-center">
@@ -388,7 +364,7 @@ const CaseContactCreateScreen = ({ navigation }) => {
               placeholder="Enter notes here"
               textAlignVertical="top"
               value={notes}
-              onChangeText={(text) => setNotes(text)}
+              onChangeText={handleNotesChange}
             />
           </View>
         );
@@ -407,7 +383,7 @@ const CaseContactCreateScreen = ({ navigation }) => {
           {renderFormPage()}
         </StyledScrollView>
         <StyledView className="flex flex-row w-80 justify-around">
-          {currentPage > 0 && <Button title="Previous" onPress={handlePreviousPage} />}
+          {currentPage > 1 && <Button title="Previous" onPress={handlePreviousPage} />}
           {currentPage < 4 ? (
             <Button title="Next" onPress={handleNextPage} />
           ) : (
