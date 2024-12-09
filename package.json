@@ -11,6 +11,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-navigation/native-stack": "^7.1.14",
     "expo": "^52.0.14",
     "expo-status-bar": "~2.0.0",
     "nativewind": "latest",

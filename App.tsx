@@ -1,13 +1,20 @@
-import { ScreenContent } from 'components/ScreenContent';
-import { StatusBar } from 'expo-status-bar';
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { createStaticNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import './global.css';
+// import './global.css';
+
+import LoginScreen from 'src/screens/LoginScreen'
+
+const RootStack = createNativeStackNavigator({
+  screens: {
+    Home: LoginScreen,
+  },
+});
+
+const Navigation = createStaticNavigation(RootStack);
 
 export default function App() {
-  return (
-    <>
-      <ScreenContent title="Home..." path="App.tsx" />
-      <StatusBar style="auto" />
-    </>
-  );
+  return <Navigation />;
 }
