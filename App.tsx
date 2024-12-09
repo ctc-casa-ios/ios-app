@@ -1,20 +1,25 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { createStaticNavigation } from '@react-navigation/native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import './global.css'; // so tailwind works
 
 import LoginScreen from 'src/screens/LoginScreen';
 
-const RootStack = createNativeStackNavigator({
-  screens: {
-    Home: LoginScreen,
-  },
-});
+import './global.css'; // so tailwind works
 
-const Navigation = createStaticNavigation(RootStack);
+const RootStack = createNativeStackNavigator();
 
 export default function App() {
-  return <Navigation />;
+  return (
+    <NavigationContainer>
+      <RootStack.Navigator>
+        <RootStack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{
+            headerShown: false, // removes header
+          }}
+        />
+      </RootStack.Navigator>
+    </NavigationContainer>
+  );
 }
