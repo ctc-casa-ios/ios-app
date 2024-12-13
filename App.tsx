@@ -4,8 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from 'src/screens/LoginScreen';
 
-import './global.css'; // so tailwind works
-
 const RootStack = createNativeStackNavigator();
 
 export default function App() {
@@ -16,7 +14,7 @@ export default function App() {
           name="LoginScreen"
           component={LoginScreen}
           options={{
-            headerShown: false, // removes header
+            headerShown: false,
           }}
         />
       </RootStack.Navigator>
