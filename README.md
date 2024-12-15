@@ -26,13 +26,8 @@ npm -v
 If the npm command is not recognized, please install the latest version of [Node.js](https://nodejs.org/en/download/).
 <br />
 <br />
-Install [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
 
-```
-npm install --global yarn
-```
-
-Additionally, if you have an IOS device, download the [Expo Go](https://apps.apple.com/us/app/expo-go/id982107779) app for previewing. Otherwise, [Snack](https://snack.expo.dev/) is expo's official web-based alternative.
+Additionally, if you have an IOS or android device, download the [Expo Go](https://apps.apple.com/us/app/expo-go/id982107779) app for previewing. Otherwise, [Snack](https://snack.expo.dev/) is expo's official web-based alternative.
 
 ### Installation
 
@@ -42,13 +37,15 @@ Additionally, if you have an IOS device, download the [Expo Go](https://apps.app
 git clone https://github.com/YOUR_USER_NAME/casa-ios-ctc.git
 ```
 
-2. Install expo-cli
+2. Install dependencies
 ```
-npm i -g expo-cli
+npm i
 ```
 
 3. Run the application
-
+```
+npx expo start --reset-cache
+```
   You should now have a React Native / Typescript app running on
   the localhost address displayed within your terminal. A QR code should also appear.
   <br />
@@ -57,7 +54,7 @@ npm i -g expo-cli
 
 
 
-  ## ✨ Extra
+  ## ✨ Contributing
   
   Now that the project is set up, you can contribute to it! :)
   To ensure everything is working as it should, create an initial "landing pull request" this should be a small change such as adding an emoji or a greeting to the main page.
@@ -68,4 +65,4 @@ npm i -g expo-cli
   - Then, after every few changes, commit with ```git commit -m " YOUR COMMIT DESCRIPTION "```
   - Finally, ensuring my repo is set as the upstream, ```git push``` the changes to your fork and make a pull request to this repo that resolves one of the     "Landing/Onboarding Pull Request's"
 
-  Congrats, you are now an open source developer 😎
+  Congrats, if you were not before, you are now an open source developer 😎
