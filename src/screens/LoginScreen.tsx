@@ -2,6 +2,7 @@ import { View, Image } from 'react-native';
 
 import AuthForm from 'src/components/AuthForm';
 
+
 import tw from 'twrnc';
 
 // note to self: removed previously added "w-65 h-auto pb-20 z-1" from rfgLogo
@@ -21,7 +22,7 @@ function LoginScreen() {
 		</View>
 		
 		<View style={tw`justify-start items-center gap-4 flex h-1/3 w-screen bg-[#345073] pb-20`}>
-			<AuthForm submitButtonText="Sign-In"/>
+			<AuthForm submitButtonText="Sign-In" onSubmit={console.log("placeholder")}/>
 		</View>
 
 		<View style={tw`flex h-1/3 w-screen items-center`}>	
@@ -34,43 +35,3 @@ function LoginScreen() {
 };
 
 export default LoginScreen;
-
-
-
-
-
-
-/*
-    <View
-     style={tw`flex flex-1 justify-between items-center gap-3 bg-[#345073]`} 
-     > 
-     
-       <View className="flex flex-1 justify-end">
-
-        <Image
-         source={casaLogo} 
-         className="self-center"
-         style={{ width: 80, height: 80 }}	 
-             />
-
-      </View>
-
-       <View style={tw`flex flex-1 justify-start items-center gap-4 w-full`}>
-
-
-	<AuthForm/>
-
-
-      </View>
-
-
-       <View className="flex flex-1 items-center">
-
-        <Image
-         source={rfgLogo}
-         style={{ width: 256, resizeMode: 'contain' }}
-        />
-
-      </View>
-    </View>
-*/
