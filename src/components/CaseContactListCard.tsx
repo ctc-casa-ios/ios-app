@@ -12,7 +12,7 @@ const CaseContactListCard = ({ item, navigation }) => {
 	buttonStyle={tw`flex justify-center items-center w-80 h-[20] bg-[#ffffff] rounded-3xl font-bold shadow-lg`}	
 	textStyle={tw`text-xl font-bold text-black`}
         title={item.name}
-        onPress={() => console.log("OUTPUTS")}
+        onPress={() => navigation.navigate('CaseContactDetailScreen')}
       />
 
     

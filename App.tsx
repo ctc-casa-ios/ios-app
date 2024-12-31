@@ -6,6 +6,7 @@ import LoginScreen from 'src/screens/LoginScreen';
 import AccountScreen from 'src/screens/AccountScreen';
 
 import CaseContactListScreen from 'src/screens/CaseContactListScreen';
+import CaseContactDetailScreen from 'src/screens/CaseContactDetailScreen';
 
 
 const RootStack = createNativeStackNavigator();
@@ -31,6 +32,13 @@ export default function App() {
         <RootStack.Screen
           name="AccountScreen"
           component={AccountScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <RootStack.Screen
+          name="CaseContactDetailScreen"
+          component={CaseContactDetailScreen}
           options={{
             headerShown: false,
           }}
