@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from 'src/screens/LoginScreen';
-import HomeScreen from 'src/screens/HomeScreen';
+import CaseContactListScreen from 'src/screens/CaseContactListScreen';
 
 
 const RootStack = createNativeStackNavigator();
@@ -20,8 +20,8 @@ export default function App() {
           }}
         />
         <RootStack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
+          name="CaseContactListScreen"
+          component={CaseContactListScreen}
           options={{
             headerShown: false,
           }}

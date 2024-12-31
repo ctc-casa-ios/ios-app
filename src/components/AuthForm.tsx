@@ -33,7 +33,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const signedin = async (email, password) => {
 
   const authApi = axios.create({
-    baseURL: 'https://example-url/',
+    baseURL: 'https://example.com/',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -92,13 +92,13 @@ const AuthForm: React.FC<LoginFieldProps> = ({
 	onChangeText={setPassword} 
       />
      {errorMessage && <Text className="pl-4 text-red-500">{errorMessage}</Text>}
-     <Button style={tw`flex bg-[#ea5a4e] text-white rounded-3xl w-40 h-10  flex justify-center items-center`}
-             titleColor="white"
+     <Button buttonStyle={tw`flex bg-[#ea5a4e] rounded-3xl w-40 h-10  flex justify-center items-center`} 
+	     textStyle={tw`text-xl font-bold text-white`}
 	     title="Sign In"
 	     onPress={a => { signedin(email, password).then((success) => {
     				if (success) {
       					console.log('Signed in successfully');
-      					navigation.navigate('HomeScreen');
+      					navigation.navigate('CaseContactListScreen');
     				} else {
       					console.log('Failed to sign in');
     				}

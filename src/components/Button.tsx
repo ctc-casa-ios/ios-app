@@ -10,10 +10,10 @@ interface Props {
   titleColor?: string;
 }
 
-const Button: React.FC<Props> = ({ title, onPress, style, titleColor }) => {
+const Button: React.FC<Props> = ({ title, onPress, buttonStyle, textStyle, titleColor }) => {
   return (
-    <TouchableOpacity style={style}  onPress={onPress}>
-      <Text className="text-lg" style={{ color: titleColor, fontWeight: 'bold' }} onPress={onPress}>
+    <TouchableOpacity style={buttonStyle}  onPress={onPress}>
+      <Text style={textStyle} onPress={onPress}>
         {title}
       </Text>
     </TouchableOpacity>
