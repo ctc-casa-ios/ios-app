@@ -33,7 +33,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const signedin = async (email, password) => {
 
   const authApi = axios.create({
-    baseURL: 'https://example.com/',
+    baseURL: 'https://casa-qa.herokuapp.com/',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -98,7 +98,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
 	     onPress={a => { signedin(email, password).then((success) => {
     				if (success) {
       					console.log('Signed in successfully');
-      					navigation.navigate('CaseContactListScreen');
+      					navigation.navigate('MainTabs');
     				} else {
       					console.log('Failed to sign in');
     				}

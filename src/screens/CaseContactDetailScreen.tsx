@@ -4,7 +4,6 @@ import { View, Text, FlatList } from 'react-native';
 
 import tw from 'twrnc';
 
-import BottomTabNavigator from '../components/BottomTabNavigator';
 import CaseContactDetailCard from '../components/CaseContactDetailCard';
 
 
@@ -58,10 +57,6 @@ const CaseContactDetailScreen = ({ navigation }) => {
 
      </View>
 
-      <BottomTabNavigator
-        style={tw`flex-row pb-10 items-center justify-around h-1/6 w-full bg-[#345073]`}
-        navigation={navigation}
-      />
     </View>
 
   );

@@ -1,7 +1,6 @@
 // import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 
-import BottomTabNavigator from '../components/BottomTabNavigator';
 import Button from '../components/Button';
 
 import tw from 'twrnc';
@@ -27,10 +26,6 @@ const AccountScreen = ({ navigation }) => {
         />
 
       </View>
-      <BottomTabNavigator
-        style={tw`flex-row pb-10 items-center justify-around h-1/5 w-full bg-[#345073]`}
-        navigation={console.log("tab nav")}
-      />
 
       </View>
 

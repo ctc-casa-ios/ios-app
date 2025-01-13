@@ -1,7 +1,6 @@
 import { View, Text, FlatList } from 'react-native';
 
 import CaseContactListCard from '../components/CaseContactListCard';
-import BottomTabNavigator from '../components/BottomTabNavigator';
 
 import Button from '../components/Button';
 
@@ -44,12 +43,6 @@ const CaseContactListScreen = ({ navigation }) => {
       </View>
 
 	
-	
-
-      <BottomTabNavigator
-        style={tw`flex-row pb-10 items-center justify-around h-1/5 w-full bg-[#345073]`}
-        navigation={navigation}
-      />	
 
 
 

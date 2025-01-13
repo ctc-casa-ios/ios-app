@@ -1,15 +1,65 @@
 import React from 'react';
+import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 import LoginScreen from 'src/screens/LoginScreen';
 import AccountScreen from 'src/screens/AccountScreen';
 
 import CaseContactListScreen from 'src/screens/CaseContactListScreen';
 import CaseContactDetailScreen from 'src/screens/CaseContactDetailScreen';
+import CaseContactCreateScreen from 'src/screens/CaseContactCreateScreen';
 
 
+import Button from 'src/components/Button';
+import tw from 'twrnc';
+
+
+const Tab = createBottomTabNavigator();
 const RootStack = createNativeStackNavigator();
+
+
+function CustomTabBar({ navigation }) {
+  return (
+    <View style={tw`flex-row pb-10 items-center justify-around h-1/8 w-full bg-[#345073] py-1`}>
+      <Button
+        buttonStyle={tw`flex justify-center items-center bg-[#ea5a4e] rounded-3xl w-[30] h-[10]`}
+        textStyle={tw`text-xl font-bold text-white`}
+        title="My Cases"
+        onPress={() => navigation.navigate("CaseContactListScreen")}
+      />
+      <Button
+        buttonStyle={tw`flex justify-center items-center bg-[#ea5a4e] rounded-3xl w-[25] h-[10]`}
+        textStyle={tw`text-xl font-bold text-white`}
+        title="Create"
+        onPress={() => navigation.navigate("CaseContactCreateScreen")}
+      />
+      <Button
+        buttonStyle={tw`flex justify-center items-center bg-[#ea5a4e] rounded-3xl w-[30] h-[10]`}
+        textStyle={tw`text-xl font-bold text-white`}
+        title="Account"
+        onPress={() => navigation.navigate("AccountScreen")}
+      />
+    </View>
+  );
+}
+
+
+function TabNavigator() {
+  return (
+    <Tab.Navigator
+     screenOptions={{ headerShown: false }}
+     tabBar={(props) => <CustomTabBar {...props} />}>
+      <Tab.Screen name="CaseContactListScreen" component={CaseContactListScreen} />
+      <Tab.Screen name="AccountScreen" component={AccountScreen} />
+      <Tab.Screen name="CaseContactCreateScreen" component={CaseContactCreateScreen} />
+      <Tab.Screen name="CaseContactDetailScreen" component={CaseContactDetailScreen} />
+    </Tab.Navigator>
+  );
+}
+
 
 export default function App() {
   return (
@@ -18,30 +68,12 @@ export default function App() {
         <RootStack.Screen
           name="LoginScreen"
           component={LoginScreen}
-          options={{
-            headerShown: false,
-          }}
+          options={{ headerShown: false }}
         />
         <RootStack.Screen
-          name="CaseContactListScreen"
-          component={CaseContactListScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <RootStack.Screen
-          name="AccountScreen"
-          component={AccountScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <RootStack.Screen
-          name="CaseContactDetailScreen"
-          component={CaseContactDetailScreen}
-          options={{
-            headerShown: false,
-          }}
+          name="MainTabs"
+          component={TabNavigator}
+          options={{ headerShown: false }}
         />
       </RootStack.Navigator>
     </NavigationContainer>
