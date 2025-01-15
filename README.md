@@ -58,7 +58,7 @@ npx expo start --reset-cache
   
   Now that the project is set up, you can contribute to it! :)
   To ensure everything is working as it should, create an initial "landing pull request" this should be a small change such as adding an emoji or a greeting to the main page.
-  - Within your local repo, run ```git status``` to ensure you're on the ```main``` branch
+  - Within your local repo, run ```git status``` to ensure you're on the ```main``` branch then switch to the ``` casa_ios_onboarding ``` branch. To do so, attempt ``` git checkout casa_ios_onboarding ``` and read instructions
   - Create a seperate branch within your local repo with ```git checkout -b YOUR_BRANCH_NAME```
   - Make your addition(s). Ensure that the edited files are added with
   ```git add CHANGED_FILE```, run ```git status``` often
