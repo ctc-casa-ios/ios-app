@@ -54,7 +54,7 @@ npx expo start --reset-cache
 
 
 
-  ## ✨ Contributing
+  ## ✨ Contributing & Onboarding
   
   Now that the project is set up, you can contribute to it! :)
   To ensure everything is working as it should, create an initial "landing pull request" this should be a small change such as adding an emoji or a greeting to the main page.
@@ -63,6 +63,6 @@ npx expo start --reset-cache
   - Make your addition(s). Ensure that the edited files are added with
   ```git add CHANGED_FILE```, run ```git status``` often
   - Then, after every few changes, commit with ```git commit -m " YOUR COMMIT DESCRIPTION "```
-  - Finally, ensuring my repo is set as the upstream, ```git push``` the changes to your fork and make a pull request to this repo that resolves one of the     "Landing/Onboarding Pull Request's"
+  - Finally, ensuring my repo is set as the upstream, ```git push origin casa_ios_onboarding ``` the changes to your fork and make a pull request to this repo that resolves one of the     "Landing/Onboarding Pull Request's"
 
   Congrats, if you were not before, you are now an open source developer 😎
