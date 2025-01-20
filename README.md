@@ -65,4 +65,4 @@ npx expo start --reset-cache
   - Then, after every few changes, commit with ```git commit -m " YOUR COMMIT DESCRIPTION "```
   - Finally, ensuring my repo is set as the upstream, ```git push origin casa_ios_onboarding ``` the changes to your fork and make a pull request to this repo that resolves one of the     "Landing/Onboarding Pull Request's"
 
-  Congrats, if you were not before, you are now an open source developer 😎
+  Congrats🎉, if you were not before, you are now an open source developer 😎
