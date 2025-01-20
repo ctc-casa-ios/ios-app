@@ -13,7 +13,7 @@ function OnBoardScreen() {
       style={tw`w-25 h-25 mb-5`}
     />
     <Text style={tw`text-red-500 text-3xl font-bold`}>🎉 Congratulations 🥳</Text>
-    <Text style={tw`text-red-500 text-xl mt-2`}>Setup Complete</Text>
+    <Text style={tw`text-red-500 text-xl mt-2`}>🎉Setup Complete 🎉</Text>
     </View>
 
   );
