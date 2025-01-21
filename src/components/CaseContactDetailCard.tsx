@@ -26,10 +26,7 @@ const CaseContactDetailCard = ({ item }) => {
         {item.input}
       </Text>
 
-
-
     </View>
-
 
   );
 };

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import tw from 'twrnc';
-
 interface Props {
   title: string;
   onPress: () => void;

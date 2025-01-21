@@ -15,8 +15,6 @@ const CaseContactListCard = ({ item, navigation }) => {
         onPress={() => navigation.navigate('CaseContactDetailScreen')}
       />
 
-    
-
     </TouchableOpacity>
   );
 };
