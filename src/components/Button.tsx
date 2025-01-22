@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
 interface Props {
   title: string;
@@ -10,7 +10,7 @@ interface Props {
 
 const Button: React.FC<Props> = ({ title, onPress, buttonStyle, textStyle, titleColor }) => {
   return (
-    <TouchableOpacity style={buttonStyle}  onPress={onPress}>
+    <TouchableOpacity style={buttonStyle} onPress={onPress}>
       <Text style={textStyle} onPress={onPress}>
         {title}
       </Text>
