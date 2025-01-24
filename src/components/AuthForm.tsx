@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { TextInput, Text, StyleSheet } from 'react-native';
 import tw from 'twrnc';
 
+import signin from 'src/components/context/AuthContext';
+
 import Button from './Button';
 
 interface LoginFieldProps {
@@ -23,36 +25,6 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const [password, setPassword] = useState<string>('');
 
   const navigation = useNavigation();
-
-  // // For Testing Purposes Remember to re-add this and axios to auth context //
-  const signedin = async (email, password) => {
-    const authApi = axios.create({
-      baseURL: 'https://casa-qa.herokuapp.com/',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    });
-
-    try {
-      const response = await authApi.post('/api/v1/users/sign_in', {
-        email,
-        password,
-      });
-
-      console.log(response.headers.toJSON());
-      console.log(response.status);
-      console.log(response.statusText);
-      console.log(response.data);
-
-      return true;
-    } catch (err) {
-      console.error('Error:', err.response);
-
-      return false;
-    }
-  };
-  // // // // // // // // // // // // // // // // // // // // // // // // // //
 
   return (
     <>
@@ -79,7 +51,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
         textStyle={tw`text-xl font-bold text-white`}
         title="Sign In"
         onPress={(a) => {
-          signedin(email, password)
+          signin(email, password)
             .then((success) => {
               if (success) {
                 console.log('Signed in successfully');

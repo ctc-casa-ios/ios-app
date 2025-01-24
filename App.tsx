@@ -13,6 +13,7 @@ import LoginScreen from 'src/screens/LoginScreen';
 import tw from 'twrnc';
 
 import store from './store';
+let isSignedIn = false;
 
 const Tab = createBottomTabNavigator();
 const RootStack = createNativeStackNavigator();
@@ -60,16 +61,18 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <RootStack.Navigator>
-          <RootStack.Screen
-            name="LoginScreen"
-            component={LoginScreen}
-            options={{ headerShown: false }}
-          />
+	{isSignedIn ? (
           <RootStack.Screen
             name="MainTabs"
             component={TabNavigator}
             options={{ headerShown: false }}
-          />
+          /> 
+	 ) : (
+          <RootStack.Screen
+            name="LoginScreen"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />)}
         </RootStack.Navigator>
       </NavigationContainer>
     </Provider>
