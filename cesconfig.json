@@ -1,12 +1,6 @@
 {
   "cesVersion": "2.12.1",
   "projectName": "ios-app",
-  "packages": [
-    {
-      "name": "nativewind",
-      "type": "styling"
-    }
-  ],
   "flags": {
     "noGit": false,
     "noInstall": false,
