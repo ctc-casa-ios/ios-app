@@ -1,10 +1,14 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import Button from 'src/components/Button';
+import {
+  Provider as AuthProvider,
+  Context as AuthContext,
+} from 'src/components/context/AuthContext';
 import AccountScreen from 'src/screens/AccountScreen';
 import CaseContactCreateScreen from 'src/screens/CaseContactCreateScreen';
 import CaseContactDetailScreen from 'src/screens/CaseContactDetailScreen';
@@ -13,7 +17,6 @@ import LoginScreen from 'src/screens/LoginScreen';
 import tw from 'twrnc';
 
 import store from './store';
-let isSignedIn = false;
 
 const Tab = createBottomTabNavigator();
 const RootStack = createNativeStackNavigator();
@@ -56,25 +59,43 @@ function TabNavigator() {
   );
 }
 
-export default function App() {
+function MainApp() {
+  const { state, tryLocalSignin } = useContext(AuthContext);
+
+  // Attempt to restore token from AsyncStorage when the app starts
+  /*
+  useEffect(() => {
+    tryLocalSignin();
+  }, []);
+  */
+
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <RootStack.Navigator>
-	{isSignedIn ? (
+    <NavigationContainer>
+      <RootStack.Navigator>
+        {state.isSignedIn ? (
           <RootStack.Screen
             name="MainTabs"
             component={TabNavigator}
             options={{ headerShown: false }}
-          /> 
-	 ) : (
+          />
+        ) : (
           <RootStack.Screen
             name="LoginScreen"
             component={LoginScreen}
             options={{ headerShown: false }}
-          />)}
-        </RootStack.Navigator>
-      </NavigationContainer>
-    </Provider>
+          />
+        )}
+      </RootStack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <Provider store={store}>
+        <MainApp />
+      </Provider>
+    </AuthProvider>
   );
 }
