@@ -1,7 +1,8 @@
-// Refactored TypeScript React-Native Component
-import { styled } from 'nativewind';
-import React, { useState } from 'react';
-import { TextInput, Text, StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useContext } from 'react';
+import { TextInput, Text, StyleSheet } from 'react-native';
+import { Context as AuthContext } from 'src/components/context/AuthContext';
+import tw from 'twrnc';
 
 import Button from './Button';
 
@@ -12,9 +13,6 @@ interface LoginFieldProps {
   style?: StyleSheet.NamedStyles<any>;
 }
 
-const StyledTextInput = styled(TextInput);
-const StyledButton = styled(Button);
-
 const AuthForm: React.FC<LoginFieldProps> = ({
   errorMessage,
   submitButtonText,
@@ -24,35 +22,50 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  const navigation = useNavigation();
+
+  const { state, signin } = useContext(AuthContext);
+
+  const handleSignIn = async () => {
+    try {
+      await signin(email, password);
+
+      if (state.isSignedIn) {
+        navigation.navigate('MainTabs');
+      }
+    } catch (err) {
+      console.error('Error during sign-in:', err);
+    }
+  };
+
   return (
     <>
-      <StyledTextInput
-        className="pl-4 text-white"
-        style={style}
+      <TextInput
+        style={tw`flex text-white border-white border border-2 border-rounded rounded-3xl w-[70] h-10`}
         placeholder="Email"
-        placeholderTextColor={'white'}
+        placeholderTextColor="white"
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={setEmail}
       />
-      <StyledTextInput
-        className="pl-4 text-white"
-        style={style}
+      <TextInput
+        style={tw`flex text-white border-white border border-2 border-rounded rounded-3xl w-[70] h-10`}
         placeholder="Password"
-        placeholderTextColor={'white'}
+        placeholderTextColor="white"
         secureTextEntry
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={setPassword}
       />
       {errorMessage && <Text className="pl-4 text-red-500">{errorMessage}</Text>}
-      <StyledButton
-        className="flex bg-[#ea5a4e] text-white rounded-3xl w-40 h-10"
-        title={submitButtonText}
-        titleColor="white"
-        onPress={() => onSubmit({ email, password })}
+      <Button
+        buttonStyle={tw`flex bg-[#ea5a4e] rounded-3xl w-40 h-10  flex justify-center items-center`}
+        textStyle={tw`text-xl font-bold text-white`}
+        title="Sign In"
+        onPress={handleSignIn}
       />
     </>
   );
 };
+
 export default AuthForm;

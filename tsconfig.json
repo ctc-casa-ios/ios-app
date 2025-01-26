@@ -1,11 +1,11 @@
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-  },
   "extends": "expo/tsconfig.base",
-  "exclude": ["node_modules", "utils"],
-  "jsx": "react"
+  "compilerOptions": {
+    "strict": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  }
 }

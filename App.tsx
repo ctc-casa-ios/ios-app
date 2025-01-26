@@ -1,96 +1,101 @@
-import { NativeWindStyleSheet } from 'nativewind';
-import React from 'react';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator, TransitionPresets } from 'react-navigation-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, { useContext, useEffect } from 'react';
+import { View } from 'react-native';
+import { Provider } from 'react-redux';
+import Button from 'src/components/Button';
+import {
+  Provider as AuthProvider,
+  Context as AuthContext,
+} from 'src/components/context/AuthContext';
+import AccountScreen from 'src/screens/AccountScreen';
+import CaseContactCreateScreen from 'src/screens/CaseContactCreateScreen';
+import CaseContactDetailScreen from 'src/screens/CaseContactDetailScreen';
+import CaseContactListScreen from 'src/screens/CaseContactListScreen';
+import LoginScreen from 'src/screens/LoginScreen';
+import tw from 'twrnc';
 
-import { Provider as AuthProvider } from './src/context/AuthContext';
-import { setNavigator } from './src/navigationRef';
-// import the screens of our app
-import AccountScreen from './src/screens/AccountScreen';
-import CaseContactCreateScreen from './src/screens/CaseContactCreateScreen';
-import CaseContactDetailScreen from './src/screens/CaseContactDetailScreen';
-import CaseContactListScreen from './src/screens/CaseContactListScreen';
-import LoginScreen from './src/screens/LoginScreen';
+import store from './store';
 
-import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
-import store from './src/app/store'
-import { Provider } from 'react-redux'
+const Tab = createBottomTabNavigator();
+const RootStack = createNativeStackNavigator();
 
-NativeWindStyleSheet.setOutput({
-  default: 'native',
-});
+function CustomTabBar({ navigation }) {
+  return (
+    <View style={tw`flex-row pb-10 items-center justify-around h-1/8 w-full bg-[#345073] py-1`}>
+      <Button
+        buttonStyle={tw`flex justify-center items-center bg-[#ea5a4e] rounded-3xl w-[30] h-[10]`}
+        textStyle={tw`text-xl font-bold text-white`}
+        title="My Cases"
+        onPress={() => navigation.navigate('CaseContactListScreen')}
+      />
+      <Button
+        buttonStyle={tw`flex justify-center items-center bg-[#ea5a4e] rounded-3xl w-[25] h-[10]`}
+        textStyle={tw`text-xl font-bold text-white`}
+        title="Create"
+        onPress={() => navigation.navigate('CaseContactCreateScreen')}
+      />
+      <Button
+        buttonStyle={tw`flex justify-center items-center bg-[#ea5a4e] rounded-3xl w-[30] h-[10]`}
+        textStyle={tw`text-xl font-bold text-white`}
+        title="Account"
+        onPress={() => navigation.navigate('AccountScreen')}
+      />
+    </View>
+  );
+}
 
-// this variable holds the navigation structure of our app
-const switchNavigator = createSwitchNavigator({
-  LoadingAuth: ResolveAuthScreen,
-  loginFlow: createStackNavigator({
-    Login: {
-      screen: LoginScreen,
-      navigationOptions: {
-        headerShown: false,
-      },
-    },
-  },{
-    defaultNavigationOptions: {
-    ...TransitionPresets.ModalSlideFromBottomIOS,
-  }}),
-  // mainFlow: createMaterialBottomTabNavigator({
-  caseContactListFlow: createStackNavigator({
-    CaseContactList: {
-      screen: CaseContactListScreen,
-      navigationOptions: {
-        headerShown: false,
-      },
-    },
-    CaseContactDetail: {
-      screen: CaseContactDetailScreen,
-      navigationOptions: {
-        headerShown: false,
-      },
-    },
-  },{
-    defaultNavigationOptions: {
-    ...TransitionPresets.ModalSlideFromBottomIOS,
-  }}),
-  CaseContactCreateFlow: createStackNavigator({
-    CaseContactCreateScreen: {
-      screen: CaseContactCreateScreen,
-      navigationOptions: {
-        headerShown: false,
-      },
-    },
-  },{
-    defaultNavigationOptions: {
-    ...TransitionPresets.ModalSlideFromBottomIOS,
-  }}),
-  AccountFlow: createStackNavigator({
-    AccountScreen: {
-      screen: AccountScreen,
-      navigationOptions: {
-        headerShown: false,
-      },
-    },
-  },{
-    defaultNavigationOptions: {
-    ...TransitionPresets.ModalSlideFromBottomIOS,
-  }}),
-  // }),
-},{
-  initialRouteName: 'loginFlow',
-});
+function TabNavigator() {
+  return (
+    <Tab.Navigator
+      screenOptions={{ headerShown: false }}
+      tabBar={(props) => <CustomTabBar {...props} />}>
+      <Tab.Screen name="CaseContactListScreen" component={CaseContactListScreen} />
+      <Tab.Screen name="AccountScreen" component={AccountScreen} />
+      <Tab.Screen name="CaseContactCreateScreen" component={CaseContactCreateScreen} />
+      <Tab.Screen name="CaseContactDetailScreen" component={CaseContactDetailScreen} />
+    </Tab.Navigator>
+  );
+}
 
-const App = createAppContainer(switchNavigator);
+function MainApp() {
+  const { state, tryLocalSignin } = useContext(AuthContext);
 
-export default () => {
+  // Attempt to restore token from AsyncStorage when the app starts
+  /*
+  useEffect(() => {
+    tryLocalSignin();
+  }, []);
+  */
+
+  return (
+    <NavigationContainer>
+      <RootStack.Navigator>
+        {state.isSignedIn ? (
+          <RootStack.Screen
+            name="MainTabs"
+            component={TabNavigator}
+            options={{ headerShown: false }}
+          />
+        ) : (
+          <RootStack.Screen
+            name="LoginScreen"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+        )}
+      </RootStack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default function App() {
   return (
     <AuthProvider>
       <Provider store={store}>
-      <App
-        ref={(navigator) => {
-          setNavigator(navigator);
-        }}
-      />
+        <MainApp />
       </Provider>
     </AuthProvider>
   );
-};
+}

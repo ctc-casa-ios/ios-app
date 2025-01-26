@@ -1,24 +1,16 @@
-import React from 'react';
-import { styled } from 'nativewind';
-import tw from 'tailwind-react-native-classnames';
+import { TouchableOpacity } from 'react-native';
+import tw from 'twrnc';
 
-import { View, Text, TouchableOpacity } from 'react-native';
-
-import Button from '../components/Button';
-
-const StyledView = styled(View);
-const StyledButton = styled(Button);
-const StyledText = styled(Text);
+import Button from './Button';
 
 const CaseContactListCard = ({ item, navigation }) => {
   return (
     <TouchableOpacity style={tw`py-3`}>
-      <StyledButton
-        className="flex w-80 h-[60] bg-[#ffffff] text-black rounded-3xl font-bold"
-        style={tw`shadow-lg text-lg`}
+      <Button
+        buttonStyle={tw`flex justify-center items-center w-80 h-[20] bg-[#ffffff] rounded-3xl font-bold shadow-lg`}
+        textStyle={tw`text-xl font-bold text-black`}
         title={item.name}
-        titleColor="black"
-        onPress={() => navigation.navigate('CaseContactDetail')}
+        onPress={() => navigation.navigate('CaseContactDetailScreen')}
       />
     </TouchableOpacity>
   );

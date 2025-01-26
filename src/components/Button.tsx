@@ -1,6 +1,5 @@
-import { styled } from 'nativewind';
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
 interface Props {
   title: string;
@@ -9,10 +8,10 @@ interface Props {
   titleColor?: string;
 }
 
-const Button: React.FC<Props> = ({ title, onPress, style, titleColor }) => {
+const Button: React.FC<Props> = ({ title, onPress, buttonStyle, textStyle, titleColor }) => {
   return (
-    <TouchableOpacity className="flex justify-center items-center" style={style} onPress={onPress}>
-      <Text className="text-xl" style={{ color: titleColor, fontWeight: 'bold' }} onPress={onPress}>
+    <TouchableOpacity style={buttonStyle} onPress={onPress}>
+      <Text style={textStyle} onPress={onPress}>
         {title}
       </Text>
     </TouchableOpacity>

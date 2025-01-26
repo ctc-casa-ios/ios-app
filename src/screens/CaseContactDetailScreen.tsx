@@ -1,16 +1,18 @@
 import React from 'react';
-import { styled } from 'nativewind';
-import tw from 'tailwind-react-native-classnames';
-
 import { View, Text, FlatList } from 'react-native';
+import tw from 'twrnc';
 
-import BottomTabNavigator from '../components/BottomTabNavigator';
 import CaseContactDetailCard from '../components/CaseContactDetailCard';
 
-const StyledView = styled(View);
-const StyledText = styled(Text);
-const StyledCaseContactDetailCard = styled(CaseContactDetailCard);
-const StyledFlatList = styled(FlatList);
+/*
+         <FlatList
+          data={data}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <View style={{ height: 40 }} />}
+          renderItem={({ item }) => <StyledCaseContactDetailCard item={item} />}
+          keyExtractor={(item) => item.name}
+        />
+*/
 
 const CaseContactDetailScreen = ({ navigation }) => {
   const data = [
@@ -32,26 +34,21 @@ const CaseContactDetailScreen = ({ navigation }) => {
   ];
 
   return (
-    <StyledView className="flex items-center gap-3 flex-1 bg-[#d5d7da]">
-      <StyledView className="flex-col justify-center h-1/6">
-        <StyledText className="flex pt-4 text-3xl font-bold">🦋CINA-11-1002</StyledText>
-      </StyledView>
-      <StyledView
-        className="flex flex-col bg-white rounded-xl items-center w-80 py-4 h-4/6"
-        style={tw`shadow-xl`}>
-        <StyledFlatList
+    <View style={tw`flex items-center gap-3 flex-1 bg-[#d5d7da]`}>
+      <View style={tw`flex-col justify-center h-1/6`}>
+        <Text style={tw`flex pt-4 text-3xl font-bold`}>🦋CINA-11-1002</Text>
+      </View>
+
+      <View style={tw`flex flex-col bg-white rounded-xl items-center w-80 py-4 h-4/6 shadow-xl`}>
+        <FlatList
           data={data}
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => <View style={{ height: 40 }} />}
-          renderItem={({ item }) => <StyledCaseContactDetailCard item={item} />}
+          renderItem={({ item }) => <CaseContactDetailCard item={item} />}
           keyExtractor={(item) => item.name}
         />
-      </StyledView>
-      <BottomTabNavigator
-        className="flex-row pb-10 items-center justify-around h-1/6 w-screen bg-[#345073]"
-        navigation={navigation}
-      />
-    </StyledView>
+      </View>
+    </View>
   );
 };
 
