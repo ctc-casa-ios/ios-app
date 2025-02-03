@@ -1,5 +1,5 @@
 <h1 align="center">
-  CASA IOS Project Overview
+  CASA iOS Project Overview
 </h1>
 <br />
 <p align="center"><a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /></a>&nbsp;<a href="https://github.com/jaredh159/tailwind-react-native-classnames" target="_blank"><img src="https://img.shields.io/badge/tailwindcss-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white"/></a>&nbsp;<a href="https://reactnative.dev/"><img src="https://img.shields.io/badge/react native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" /></a>&nbsp;<a href="https://jestjs.io/" target="_blank"><img src="https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white" target="_blank"/></a>
@@ -9,7 +9,7 @@
 
 <!-- ABOUT THE PROJECT -->
 
-In partnership with [Ruby for Good CASA](https://github.com/rubyforgood/casa) (Court Appointed Special Advocate), [Code the Change YYC](https://www.codethechangeyyc.ca/) is creating an IOS app that allows CASA volunteers to conveniently save their case contacts.
+In partnership with [Ruby for Good CASA](https://github.com/rubyforgood/casa) (Court Appointed Special Advocate), [Code the Change YYC](https://www.codethechangeyyc.ca/) is creating an iOS app that allows CASA volunteers to conveniently save their case contacts.
 
 <!-- GETTING STARTED -->
 
@@ -27,7 +27,7 @@ If the npm command is not recognized, please install the latest version of [Node
 <br />
 <br />
 
-Additionally, if you have an IOS or android device, download the [Expo Go](https://apps.apple.com/us/app/expo-go/id982107779) app for previewing. Otherwise, [Snack](https://snack.expo.dev/) is expo's official web-based alternative.
+Additionally, if you have an iOS or android device, download the [Expo Go](https://apps.apple.com/us/app/expo-go/id982107779) app for previewing. Otherwise, [Snack](https://snack.expo.dev/) is expo's official web-based alternative.
 
 ### Installation
 
