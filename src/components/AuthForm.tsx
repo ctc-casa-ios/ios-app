@@ -54,7 +54,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
       />
       <CheckBox
         onPress={() => setStaySignedIn(!staySignedIn)}
-        title="Stay Signed In"
+        title="Stay Logged In"
         isChecked={staySignedIn}
       />
       {errorMessage && <Text className="pl-4 text-red-500">{errorMessage}</Text>}
