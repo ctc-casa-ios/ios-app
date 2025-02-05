@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useContext } from 'react';
-import { TextInput, Text, StyleSheet } from 'react-native';
+import { TextInput, Text, StyleSheet} from 'react-native';
 import { Context as AuthContext } from 'src/components/context/AuthContext';
 import tw from 'twrnc';
 
 import Button from './Button';
+import CheckBox from './CheckBox';
 
 interface LoginFieldProps {
   errorMessage: string;
@@ -21,6 +22,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
 }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [staySignedIn, setStaySignedIn] = useState<boolean>(false)
 
   const navigation = useNavigation();
 
@@ -51,11 +53,16 @@ const AuthForm: React.FC<LoginFieldProps> = ({
       <TextInput
         style={tw`flex text-white border-white border border-2 border-rounded rounded-3xl w-[70] h-10`}
         placeholder="Password"
-        placeholderTextColor="white"
+        placeholderTextColor="white"npx react-native info
         secureTextEntry
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={setPassword}
+      />
+      <CheckBox
+        onPress={() => setStaySignedIn(!staySignedIn)}
+        title="Stay Signed In"
+        isChecked={staySignedIn}
       />
       {errorMessage && <Text className="pl-4 text-red-500">{errorMessage}</Text>}
       <Button
