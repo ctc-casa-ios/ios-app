@@ -25,16 +25,16 @@ const updateUser = (dispatch) => async (newUserData) => {
   }
 };
 
-const signin = (dispatch) => async (email, password) => {
+const signin = (dispatch) => async (email, password, staySignedIn) => {
   const data = await routeRequest('/api/v1/users/sign_in', { email, password }); // Sign-in first
-
-  if (data) {
-    const { id, display_name, email, token } = data;
+  const { id, display_name, userEmail, token } = data;
+  if (token) {
     try {
-      await AsyncStorage.setItem('auth_token', token);
-      await AsyncStorage.setItem('user', JSON.stringify({ id, display_name, email }));
-      console.log('User data stored in AsyncStorage' + ' Hello ' + display_name);
-
+      if (staySignedIn) {
+        await AsyncStorage.setItem('auth_token', token);
+        await AsyncStorage.setItem('user', JSON.stringify({ id, display_name, email }));
+        console.log('User data stored in AsyncStorage' + ' Hello ' + display_name);
+      }
       dispatch({
         type: 'signin',
         payload: { token, user: { id, display_name, email } },

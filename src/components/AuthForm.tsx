@@ -10,7 +10,7 @@ import CheckBox from './CheckBox';
 interface LoginFieldProps {
   errorMessage: string;
   submitButtonText: string;
-  onSubmit: ({ email, password }) => void;
+  onSubmit: ({ email, password, staySignedin}) => void;
   style?: StyleSheet.NamedStyles<any>;
 }
 
@@ -30,7 +30,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
 
   const handleSignIn = async () => {
     try {
-      await signin(email, password);
+      await signin(email, password, staySignedIn);
 
       if (state.isSignedIn) {
         navigation.navigate('MainTabs');
