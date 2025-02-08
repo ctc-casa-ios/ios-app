@@ -9,7 +9,7 @@ import CheckBox from './CheckBox';
 interface LoginFieldProps {
   errorMessage: string;
   submitButtonText: string;
-  onSubmit: ({ email, password }) => void;
+  onSubmit: ({ email, password, staySignedin}) => void;
   style?: StyleSheet.NamedStyles<any>;
 }
 
