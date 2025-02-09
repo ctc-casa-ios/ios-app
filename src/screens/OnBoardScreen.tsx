@@ -11,6 +11,7 @@ function OnBoardScreen() {
       <Text style={tw`text-red-500 text-3xl font-bold`}>🎉 Congratulations 🥳</Text>
       <Text style={tw`text-red-500 text-xl mt-2`}>Setup Done 🚀</Text>
       <Text style={tw`text-red-500 text-xl mt-2`}>Onboarding change!</Text>
+      <Text style={tw`text-red-500 text-xl mt-2`}>Hello World!</Text>
     </View>
   );
 }
