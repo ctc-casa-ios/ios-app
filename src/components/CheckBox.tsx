@@ -1,37 +1,21 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import tw from 'twrnc';
 
 const CheckBox = (props) => {
     const iconName = props.isChecked ?
         "checkbox-marked" : "checkbox-blank-outline";
 
     return (
-        <View style={styles.container}>
+        <View style={tw`flex-row items-center w-36 mt-1 mx-1`}>
             <Pressable onPress={props.onPress}>
                 <MaterialCommunityIcons 
                     name={iconName} size={24} color="#FFFFFF" />
             </Pressable>
-            <Text style={styles.title}>{props.title}</Text>
+            <Text style={tw`text-white text-sm font-semibold ml-1`}>{props.title}</Text>
         </View>
     );
 };
 
 export default CheckBox;
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: "flex-start",
-        alignItems: "center",
-        flexDirection: "row",
-        width: 150,
-        marginTop: 5,
-        marginHorizontal: 5,
-    },
-    title: {
-        fontSize: 14,
-        color: "#FFFFFF",
-        marginLeft: 5,
-        fontWeight: "600",
-    },
-});
