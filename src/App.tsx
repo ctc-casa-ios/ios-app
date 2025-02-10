@@ -48,11 +48,12 @@ function CustomTabBar({ navigation }) {
 }
 
 function TabNavigator() {
+  const { state, signout } = useContext(AuthContext);
   return (
     <Tab.Navigator
       screenOptions={{ headerShown: false }}
       tabBar={(props) => <CustomTabBar {...props} />}>
-      <Tab.Screen name="CaseContactListScreen" component={CaseContactListScreen} />
+      <Tab.Screen name="CaseContactListScreen" component={CaseContactListScreen} initialParams={{staySignedIn: state.staySignedIn}} />
       <Tab.Screen name="AccountScreen" component={AccountScreen} />
       <Tab.Screen name="CaseContactCreateScreen" component={CaseContactCreateScreen} />
       <Tab.Screen name="CaseContactDetailScreen" component={CaseContactDetailScreen} />
@@ -63,11 +64,9 @@ function TabNavigator() {
 function MainApp() {
   const { state, tryLocalSignin } = useContext(AuthContext);
   // Attempt to restore token from AsyncStorage when the app starts
-  /*
   useEffect(() => {
     tryLocalSignin();
   }, []);
-  */
 
   return (
     <NavigationContainer>
