@@ -6,7 +6,7 @@ import createDataContext from './createDataContext';
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'signin':
-      return { ...state, isSignedIn: true, token: action.payload.token, user: action.payload.user };
+      return { ...state, isSignedIn: true, token: action.payload.token, user: action.payload.user, staySignedIn: action.payload.staySignedIn };
     case 'signout':
       return { ...state, isSignedIn: false, token: null };
     case 'update_user':
@@ -37,7 +37,7 @@ const signin = (dispatch) => async (email, password, staySignedIn) => {
       }
       dispatch({
         type: 'signin',
-        payload: { token, user: { id, display_name, email } },
+        payload: { token, user: { id, display_name, email }, staySignedIn},
       });
     } catch (storageError) {
       console.error('Error storing data in AsyncStorage:', storageError);
@@ -73,5 +73,5 @@ const tryLocalSignin = (dispatch) => async () => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signin, signout, updateUser, tryLocalSignin },
-  { isSignedIn: false, token: null, user: null }
+  { isSignedIn: false, token: null, user: null, staySignedIn: false}
 );
