@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { registerRootComponent } from 'expo';
 import React, { useContext, useEffect } from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
@@ -9,14 +10,16 @@ import {
   Provider as AuthProvider,
   Context as AuthContext,
 } from 'src/components/context/AuthContext';
+import { useAppSelector } from 'src/redux/hooks';
 import AccountScreen from 'src/screens/AccountScreen';
 import CaseContactCreateScreen from 'src/screens/CaseContactCreateScreen';
 import CaseContactDetailScreen from 'src/screens/CaseContactDetailScreen';
 import CaseContactListScreen from 'src/screens/CaseContactListScreen';
 import LoginScreen from 'src/screens/LoginScreen';
+import { selectAuth } from 'src/slices/authSlice';
 import tw from 'twrnc';
 
-import store from './store';
+import { store } from './redux/store';
 
 const Tab = createBottomTabNavigator();
 const RootStack = createNativeStackNavigator();
@@ -61,7 +64,7 @@ function TabNavigator() {
 
 function MainApp() {
   const { state, tryLocalSignin } = useContext(AuthContext);
-
+  const authState = useAppSelector(selectAuth);
   // Attempt to restore token from AsyncStorage when the app starts
   /*
   useEffect(() => {
@@ -72,7 +75,7 @@ function MainApp() {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
-        {state.isSignedIn ? (
+        {authState.isSignedIn ? (
           <RootStack.Screen
             name="MainTabs"
             component={TabNavigator}
@@ -90,7 +93,7 @@ function MainApp() {
   );
 }
 
-export default function App() {
+function App() {
   return (
     <AuthProvider>
       <Provider store={store}>
@@ -99,3 +102,5 @@ export default function App() {
     </AuthProvider>
   );
 }
+
+registerRootComponent(App);

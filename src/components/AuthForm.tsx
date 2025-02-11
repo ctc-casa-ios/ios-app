@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState, useContext } from 'react';
 import { TextInput, Text, StyleSheet } from 'react-native';
 import { Context as AuthContext } from 'src/components/context/AuthContext';
+import { useAppSelector, useAppDispatch } from 'src/redux/hooks';
+import { selectAuth, signIn } from 'src/slices/authSlice';
 import tw from 'twrnc';
 
 import Button from './Button';
@@ -25,14 +27,12 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const navigation = useNavigation();
 
   const { state, signin } = useContext(AuthContext);
+  const dispatch = useAppDispatch();
+  const authState = useAppSelector(selectAuth);
 
   const handleSignIn = async () => {
     try {
-      await signin(email, password);
-
-      if (state.isSignedIn) {
-        navigation.navigate('MainTabs');
-      }
+      await dispatch(signIn({ email, password }));
     } catch (err) {
       console.error('Error during sign-in:', err);
     }
