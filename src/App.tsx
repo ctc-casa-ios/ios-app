@@ -64,10 +64,12 @@ function TabNavigator() {
 function MainApp() {
   const { state, tryLocalSignin } = useContext(AuthContext);
   // Attempt to restore token from AsyncStorage when the app starts
+  /*
   useEffect(() => {
     tryLocalSignin();
   }, []);
-
+  */
+ 
   return (
     <NavigationContainer>
       <RootStack.Navigator>
