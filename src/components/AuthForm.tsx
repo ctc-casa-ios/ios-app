@@ -46,7 +46,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
       <TextInput
         style={tw`flex text-white border-white border border-2 border-rounded rounded-3xl w-[70] h-10`}
         placeholder="Password"
-        placeholderTextColor="white"npx react-native info
+        placeholderTextColor="white"
         secureTextEntry
         autoCapitalize="none"
         autoCorrect={false}

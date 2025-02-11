@@ -4,10 +4,9 @@ import { useState, useEffect } from 'react'
 import React from 'react';
 
 import CaseContactListCard from '../components/CaseContactListCard';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const CaseContactListScreen = ({ navigation, route }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
   const data = [{ name: '🦋CINA-11-1002' }, { name: '🦋CINA-11-1003' }, { name: '🦋CINA-11-1004' }];
 
   useEffect(() => {
@@ -39,8 +38,6 @@ const CaseContactListScreen = ({ navigation, route }) => {
         </View>
       </View>
     </View>
-    <SafeAreaProvider>
-    <SafeAreaView style={tw`flex-1 justify-center items-center`}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -60,8 +57,6 @@ const CaseContactListScreen = ({ navigation, route }) => {
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
-  </SafeAreaProvider>   
   </>   
   );
 };
