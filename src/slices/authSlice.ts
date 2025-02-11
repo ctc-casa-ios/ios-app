@@ -25,7 +25,7 @@ export const signIn = createAppAsyncThunk(
       try {
         await AsyncStorage.setItem('auth_token', data.token);
         return data;
-      } catch (err) {
+      } catch {
         return Promise.reject(new Error('Error storing data in AsyncStorage'));
       }
     } else {

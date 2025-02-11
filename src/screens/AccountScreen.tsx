@@ -1,18 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
-import { Context as AuthContext } from 'src/components/context/AuthContext';
-import { useAppSelector, useAppDispatch } from 'src/redux/hooks';
+import { useAppSelector } from 'src/redux/hooks';
 import { selectAuth } from 'src/slices/authSlice';
 import tw from 'twrnc';
 
 import Button from '../components/Button';
 
 const AccountScreen = ({ navigation }) => {
-  const { state } = useContext(AuthContext);
-  const dispatch = useAppDispatch();
   const authState = useAppSelector(selectAuth);
-
-  const { user } = state;
 
   return (
     <View style={tw`flex items-center gap-3 flex-1 bg-[#d5d7da]`}>

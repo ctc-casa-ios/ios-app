@@ -1,9 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { TextInput, Text, StyleSheet } from 'react-native';
-import { Context as AuthContext } from 'src/components/context/AuthContext';
-import { useAppSelector, useAppDispatch } from 'src/redux/hooks';
-import { selectAuth, signIn } from 'src/slices/authSlice';
+import { useAppDispatch } from 'src/redux/hooks';
+import { signIn } from 'src/slices/authSlice';
 import tw from 'twrnc';
 
 import Button from './Button';
@@ -24,11 +22,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const navigation = useNavigation();
-
-  const { state, signin } = useContext(AuthContext);
   const dispatch = useAppDispatch();
-  const authState = useAppSelector(selectAuth);
 
   const handleSignIn = async () => {
     try {
