@@ -6,7 +6,7 @@ import createDataContext from './createDataContext';
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'signin':
-      return { ...state, isSignedIn: true, token: action.payload.token, user: action.payload.user, staySignedIn: action.payload.staySignedIn };
+      return { ...state, isSignedIn: true, token: action.payload.token, user: action.payload.user };
     case 'signout':
       return { ...state, isSignedIn: false, token: null };
     case 'update_user':
@@ -25,19 +25,19 @@ const updateUser = (dispatch) => async (newUserData) => {
   }
 };
 
-const signin = (dispatch) => async (email, password, staySignedIn) => {
+const signin = (dispatch) => async (email, password) => {
   const data = await routeRequest('/api/v1/users/sign_in', { email, password }); // Sign-in first
-  const { id, display_name, userEmail, token } = data;
-  if (token) {
+
+  if (data) {
+    const { id, display_name, email, token } = data;
     try {
-      if (staySignedIn) {
-        await AsyncStorage.setItem('auth_token', token);
-        await AsyncStorage.setItem('user', JSON.stringify({ id, display_name, email }));
-        console.log('User data stored in AsyncStorage' + ' Hello ' + display_name);
-      }
+      await AsyncStorage.setItem('auth_token', token);
+      await AsyncStorage.setItem('user', JSON.stringify({ id, display_name, email }));
+      console.log('User data stored in AsyncStorage' + ' Hello ' + display_name);
+
       dispatch({
         type: 'signin',
-        payload: { token, user: { id, display_name, email }, staySignedIn},
+        payload: { token, user: { id, display_name, email } },
       });
     } catch (storageError) {
       console.error('Error storing data in AsyncStorage:', storageError);
@@ -73,5 +73,5 @@ const tryLocalSignin = (dispatch) => async () => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signin, signout, updateUser, tryLocalSignin },
-  { isSignedIn: false, token: null, user: null, staySignedIn: false}
+  { isSignedIn: false, token: null, user: null }
 );
