@@ -4,7 +4,7 @@ import React from 'react';
 
 import CaseContactListCard from '../components/CaseContactListCard';
 
-const CaseContactListScreen = ({ navigation, route }) => {
+const CaseContactListScreen = ({ navigation }) => {
   const data = [{ name: '🦋CINA-11-1002' }, { name: '🦋CINA-11-1003' }, { name: '🦋CINA-11-1004' }];
 
   return (
