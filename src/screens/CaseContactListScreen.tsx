@@ -1,6 +1,5 @@
 import { View, Text, FlatList} from 'react-native';
 import tw from 'twrnc';
-import React from 'react';
 
 import CaseContactListCard from '../components/CaseContactListCard';
 
@@ -8,7 +7,6 @@ const CaseContactListScreen = ({ navigation }) => {
   const data = [{ name: '🦋CINA-11-1002' }, { name: '🦋CINA-11-1003' }, { name: '🦋CINA-11-1004' }];
 
   return (
-    <>
     <View style={tw`flex items-center gap-3 flex-1 bg-[#d5d7da]`}>
       <View style={tw`flex-col justify-center h-1/5`}>
         <Text style={tw`text-3xl font-bold`}>MY CASES</Text>
@@ -29,8 +27,7 @@ const CaseContactListScreen = ({ navigation }) => {
           />
         </View>
       </View>
-    </View>
-  </>   
+    </View> 
   );
 };
 
