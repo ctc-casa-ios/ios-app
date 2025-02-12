@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { TextInput, Text, StyleSheet} from 'react-native';
+import { TextInput, Text, StyleSheet, Modal, Alert, Pressable, View} from 'react-native';
 import { Context as AuthContext } from 'src/components/context/AuthContext';
 import tw from 'twrnc';
 
@@ -9,7 +9,7 @@ import CheckBox from './CheckBox';
 interface LoginFieldProps {
   errorMessage: string;
   submitButtonText: string;
-  onSubmit: ({ email, password, staySignedin}) => void;
+  onSubmit: ({ email, password}) => void;
   style?: StyleSheet.NamedStyles<any>;
 }
 
@@ -22,6 +22,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [staySignedIn, setStaySignedIn] = useState<boolean>(false)
+  const [modalVisible, setModalVisible] = useState(false);
 
   const { signin } = useContext(AuthContext);
 
@@ -33,6 +34,14 @@ const AuthForm: React.FC<LoginFieldProps> = ({
     }
   };
 
+  const handleStaySignInToggle = () => {
+    if (staySignedIn) {
+      setStaySignedIn(false)
+    }else {
+      setStaySignedIn(true)
+      setModalVisible(true)
+    }
+  }
   return (
     <>
       <TextInput
@@ -53,7 +62,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
         onChangeText={setPassword}
       />
       <CheckBox
-        onPress={() => setStaySignedIn(!staySignedIn)}
+        onPress={handleStaySignInToggle}
         title="Stay Logged In"
         isChecked={staySignedIn}
       />
@@ -64,6 +73,24 @@ const AuthForm: React.FC<LoginFieldProps> = ({
         title="Sign In"
         onPress={handleSignIn}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={tw`flex-1 justify-center items-center`}>
+          <View style={tw`m-5 bg-white rounded-2xl p-9 items-center shadow-lg`}>
+            <Text style={tw`mb-4 text-center`}>Your session will stay active until you sign out.</Text>
+            <Pressable
+              style={tw`rounded-2xl px-4 py-2 bg-[#345073]`}
+              onPress={() => setModalVisible(!modalVisible)}>
+              <Text style={tw`text-white font-bold text-center`}>OK</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </>
   );
 };

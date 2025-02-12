@@ -1,7 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+<<<<<<< HEAD:src/App.tsx
 import { registerRootComponent } from 'expo';
+=======
+>>>>>>> 20555f6 (Checkbox display modal on click):App.tsx
 import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
@@ -48,12 +51,11 @@ function CustomTabBar({ navigation }) {
 }
 
 function TabNavigator() {
-  const { state, signout } = useContext(AuthContext);
   return (
     <Tab.Navigator
       screenOptions={{ headerShown: false }}
       tabBar={(props) => <CustomTabBar {...props} />}>
-      <Tab.Screen name="CaseContactListScreen" component={CaseContactListScreen} initialParams={{staySignedIn: state.staySignedIn}} />
+      <Tab.Screen name="CaseContactListScreen" component={CaseContactListScreen} />
       <Tab.Screen name="AccountScreen" component={AccountScreen} />
       <Tab.Screen name="CaseContactCreateScreen" component={CaseContactCreateScreen} />
       <Tab.Screen name="CaseContactDetailScreen" component={CaseContactDetailScreen} />
@@ -69,7 +71,7 @@ function MainApp() {
     tryLocalSignin();
   }, []);
   */
- 
+
   return (
     <NavigationContainer>
       <RootStack.Navigator>
