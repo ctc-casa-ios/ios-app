@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { TextInput, Text, StyleSheet, Modal, Alert, Pressable, View} from 'react-native';
+import { TextInput, Text, StyleSheet, Modal, Alert, Pressable, View } from 'react-native';
 import { Context as AuthContext } from 'src/components/context/AuthContext';
 import tw from 'twrnc';
 

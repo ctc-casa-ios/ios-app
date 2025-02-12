@@ -1,4 +1,4 @@
-import { View, Text, FlatList} from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import tw from 'twrnc';
 
 import CaseContactListCard from '../components/CaseContactListCard';
