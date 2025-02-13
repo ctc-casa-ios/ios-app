@@ -1,7 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { useContext, useEffect } from 'react';
+import { registerRootComponent } from 'expo';
+import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import Button from 'src/components/Button';
@@ -16,7 +17,7 @@ import CaseContactListScreen from 'src/screens/CaseContactListScreen';
 import LoginScreen from 'src/screens/LoginScreen';
 import tw from 'twrnc';
 
-import store from './store';
+import { store } from './redux/store';
 
 const Tab = createBottomTabNavigator();
 const RootStack = createNativeStackNavigator();
@@ -61,7 +62,6 @@ function TabNavigator() {
 
 function MainApp() {
   const { state, tryLocalSignin } = useContext(AuthContext);
-
   // Attempt to restore token from AsyncStorage when the app starts
   /*
   useEffect(() => {
@@ -90,7 +90,7 @@ function MainApp() {
   );
 }
 
-export default function App() {
+function App() {
   return (
     <AuthProvider>
       <Provider store={store}>
@@ -99,3 +99,5 @@ export default function App() {
     </AuthProvider>
   );
 }
+
+registerRootComponent(App);

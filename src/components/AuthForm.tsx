@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useState, useContext } from 'react';
 import { TextInput, Text, StyleSheet } from 'react-native';
 import { Context as AuthContext } from 'src/components/context/AuthContext';
@@ -22,17 +21,11 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const navigation = useNavigation();
-
-  const { state, signin } = useContext(AuthContext);
+  const { signin } = useContext(AuthContext);
 
   const handleSignIn = async () => {
     try {
       await signin(email, password);
-
-      if (state.isSignedIn) {
-        navigation.navigate('MainTabs');
-      }
     } catch (err) {
       console.error('Error during sign-in:', err);
     }
