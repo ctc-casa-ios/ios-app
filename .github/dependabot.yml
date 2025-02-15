@@ -10,6 +10,6 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     ignore:
-      dependency-name: "tailwindcss"
+      - dependency-name: "tailwindcss"
     schedule:
       interval: "weekly"
