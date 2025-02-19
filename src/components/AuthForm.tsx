@@ -22,7 +22,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [staySignedIn, setStaySignedIn] = useState<boolean>(false)
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const { signin } = useContext(AuthContext);
 
@@ -34,14 +34,11 @@ const AuthForm: React.FC<LoginFieldProps> = ({
     }
   };
 
-  const handleStaySignInToggle = () => {
-    if (staySignedIn) {
-      setStaySignedIn(false)
-    }else {
-      setStaySignedIn(true)
-      setModalVisible(true)
-    }
-  }
+  const handleStaySignInToggle = () => { 
+    setStaySignedIn(!staySignedIn); 
+    if (!staySignedIn) setModalVisible(true); 
+  };
+
   return (
     <>
       <TextInput
