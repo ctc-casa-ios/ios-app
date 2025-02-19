@@ -27,7 +27,7 @@ const CaseContactListScreen = ({ navigation }) => {
           />
         </View>
       </View>
-    </View>
+    </View> 
   );
 };
 
