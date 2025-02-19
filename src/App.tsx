@@ -1,10 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-<<<<<<< HEAD:src/App.tsx
 import { registerRootComponent } from 'expo';
-=======
->>>>>>> 20555f6 (Checkbox display modal on click):App.tsx
 import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
