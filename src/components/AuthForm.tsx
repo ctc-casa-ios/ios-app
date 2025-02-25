@@ -70,6 +70,7 @@ const AuthForm: React.FC<LoginFieldProps> = ({
         textStyle={tw`text-xl font-bold text-white`}
         title="Sign In"
         onPress={handleSignIn}
+        disabled={!email || !password}
       />
       <Modal
         animationType="slide"
