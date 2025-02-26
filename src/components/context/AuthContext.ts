@@ -31,15 +31,15 @@ const signin = (dispatch) => async (email, password) => {
   if (data) {
     const { api_token, refresh_token, user:{ id, display_name, email, refresh_token_expires_at, token_expires_at } } = data;
     try {
-      console.log(api_token)
-      console.log(refresh_token_expires_at)
-      // await AsyncStorage.setItem('auth_token', token);
-      // await AsyncStorage.setItem('user', JSON.stringify({ id, display_name, email }));
+      await AsyncStorage.setItem('api_token', api_token);
+      await AsyncStorage.setItem('refresh_token', refresh_token);
+      await AsyncStorage.setItem('user', JSON.stringify({ id, display_name, email, refresh_token_expires_at, token_expires_at }));
+
       console.log('User data stored in AsyncStorage' + ' Hello ' + display_name);
 
       dispatch({
         type: 'signin',
-        payload: { token, user: { id, display_name, email } },
+        payload: { api_token, refresh_token, user:{ id, display_name, email, refresh_token_expires_at, token_expires_at } },
       });
     } catch (storageError) {
       console.error('Error storing data in AsyncStorage:', storageError);
