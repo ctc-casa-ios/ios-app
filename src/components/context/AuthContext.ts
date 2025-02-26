@@ -6,7 +6,7 @@ import createDataContext from './createDataContext';
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'signin':
-      return { ...state, isSignedIn: true, token: action.payload.token, user: action.payload.user };
+      return { ...state, isSignedIn: true, api_token: action.payload.api_token, refresh_token: action.payload.refresh_token, user: action.payload.user };
     case 'signout':
       return { ...state, isSignedIn: false, token: null };
     case 'update_user':
@@ -75,5 +75,5 @@ const tryLocalSignin = (dispatch) => async () => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signin, signout, updateUser, tryLocalSignin },
-  { isSignedIn: false, token: null, user: null }
+  { isSignedIn: false, api_token: null, refresh_token: null, user: null }
 );
