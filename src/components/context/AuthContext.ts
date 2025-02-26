@@ -60,14 +60,17 @@ const signout = (dispatch) => async () => {
 };
 
 const tryLocalSignin = (dispatch) => async () => {
-  const token = await AsyncStorage.getItem('auth_token');
+  const api_token = await AsyncStorage.getItem('api_token');
+  const refresh_token = await AsyncStorage.getItem('refresh_token');
+
   const user = await AsyncStorage.getItem('user');
 
-  console.log(token);
+  console.log(api_token);
+  console.log(refresh_token);
   console.log(user);
 
-  if (token && user) {
-    dispatch({ type: 'signin', payload: { token, user: JSON.parse(user) } });
+  if (api_token && refresh_token && user) {
+    dispatch({ type: 'signin', payload: { api_token, refresh_token, user: JSON.parse(user) } });
   } else {
     dispatch({ type: 'signout' });
   }
