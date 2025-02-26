@@ -29,10 +29,12 @@ const signin = (dispatch) => async (email, password) => {
   const data = await routeRequest('/api/v1/users/sign_in', { email, password }); // Sign-in first
 
   if (data) {
-    const { id, display_name, email, token } = data;
+    const { api_token, refresh_token, user:{ id, display_name, email, refresh_token_expires_at, token_expires_at } } = data;
     try {
-      await AsyncStorage.setItem('auth_token', token);
-      await AsyncStorage.setItem('user', JSON.stringify({ id, display_name, email }));
+      console.log(api_token)
+      console.log(refresh_token_expires_at)
+      // await AsyncStorage.setItem('auth_token', token);
+      // await AsyncStorage.setItem('user', JSON.stringify({ id, display_name, email }));
       console.log('User data stored in AsyncStorage' + ' Hello ' + display_name);
 
       dispatch({
