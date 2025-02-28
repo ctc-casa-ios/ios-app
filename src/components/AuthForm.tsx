@@ -65,10 +65,12 @@ const AuthForm: React.FC<LoginFieldProps> = ({
       />
       {errorMessage && <Text className="pl-4 text-red-500">{errorMessage}</Text>}
       <Button
-        buttonStyle={tw`flex bg-[#ea5a4e] rounded-3xl w-40 h-10  flex justify-center items-center`}
+        buttonStyle={tw`flex bg-[#ea5a4e] rounded-3xl w-40 h-10  flex justify-center items-center
+          ${!email || !password ? 'bg-gray-400' : 'bg-[#ea5a4e]'}` }
         textStyle={tw`text-xl font-bold text-white`}
         title="Sign In"
         onPress={handleSignIn}
+        disabled={!email || !password}
       />
       <Modal
         animationType="slide"
