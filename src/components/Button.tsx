@@ -10,10 +10,17 @@ interface Props {
   disabled?: boolean;
 }
 
-const Button: React.FC<Props> = ({ title, onPress, buttonStyle, textStyle, titleColor, disabled }) => {
+const Button: React.FC<Props> = ({
+  title,
+  onPress,
+  buttonStyle,
+  textStyle,
+  titleColor,
+  disabled,
+}) => {
   return (
-    <TouchableOpacity style={buttonStyle} onPress={onPress} disabled = {disabled}>
-      <Text style={textStyle} onPress={disabled ? undefined : onPress} disabled = {disabled}>
+    <TouchableOpacity style={buttonStyle} onPress={onPress} disabled={disabled}>
+      <Text style={textStyle} onPress={disabled ? undefined : onPress} disabled={disabled}>
         {title}
       </Text>
     </TouchableOpacity>
