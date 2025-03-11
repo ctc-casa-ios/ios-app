@@ -21,8 +21,7 @@
       "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "./node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)",
-      "node_modules/(?!(jest-)?react-native|@react-native|@react-native-community|@react-navigation)"
+      "./node_modules/(?!(jest-)?react-native|@react-native|@react-native-community|@react-navigation|react-redux|@reduxjs/toolkit|@react-native-async-storage/async-storage|@react-native-community/datetimepicker|@react-navigation/bottom-tabs|@react-navigation/native-stack|react-native-elements|react-native-reanimated|react-native-safe-area-context|expo-status-bar|expo|@expo|axios|twrnc)"
     ]
   },
   "dependencies": {
