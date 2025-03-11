@@ -1,18 +1,19 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { screen, fireEvent, render, userEvent } from '@testing-library/react-native';
+import { screen, userEvent } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 import { setupServer } from 'msw/node';
 import React from 'react';
 
-import App from '../../App';
+import { Provider as AuthProvider } from '../components/context/AuthContext';
+import Main from '../index';
 import AccountScreen from '../screens/AccountScreen';
+import { renderWithRedux } from '../test-utils/redux-test-utils';
 import { renderWithProviders } from '../test-utils/test-utils';
 
 const handlers = [
-  http.delete('https://casa-qa.herokuapp.com//api/v1/users/sign_out', () => {
+  http.delete('https://casa-qa.herokuapp.com/api/v1/users/sign_out', () => {
     return HttpResponse.json({ message: 'Signed out successfully.' }, { status: 200 });
   }),
-  http.get('https://casa-qa.herokuapp.com//api/v1/users/sign_in', () => {
+  http.post('https://casa-qa.herokuapp.com/api/v1/users/sign_in', () => {
     return HttpResponse.json(
       {
         id: 1,
@@ -39,7 +40,7 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 describe('AccountScreen', () => {
-  it('renders two user data fields and one button', () => {
+  it('renders the users display name, email, and one button', () => {
     renderWithProviders(<AccountScreen />);
 
     // Two Text elements for user display name and email should be rendered
@@ -50,37 +51,31 @@ describe('AccountScreen', () => {
     expect(screen.getByRole('button', { name: 'Sign out' })).toBeOnTheScreen();
   });
 
-  it('clears async storage when the sign out button is pressed', async () => {
-    renderWithProviders(<AccountScreen />);
-
-    const signOutButton = screen.getByRole('button', { name: 'Sign out' });
-
-    // Press the sign out button
-    fireEvent.press(signOutButton, 'onPress');
-
-    // async storage should be cleared
-    expect(await AsyncStorage.clear()).toHaveBeenCalledTimes(1);
-  });
-
   it('navigates to the login screen when the sign out button is pressed', async () => {
-    render(<App />);
+    renderWithRedux(
+      <AuthProvider>
+        <Main />
+      </AuthProvider>
+    );
 
     const user = userEvent.setup();
-    const signInButton = screen.getByRole('button', { name: 'Sign In' });
+    // Fill in the email and password fields
+    await user.type(screen.getByPlaceholderText('Email'), 'ash');
+    await user.type(screen.getByPlaceholderText('Password'), 'ketchum');
     // Press the sign in button
-    await user.press(signInButton);
+    await user.press(screen.getByRole('button', { name: 'Sign In' }));
 
-    const accountScreenButton = screen.getByRole('button', { name: 'Account' });
-    await user.press(accountScreenButton);
+    // check we are on the case contact list screen
+    expect(await screen.findByText('MY CASES')).toBeOnTheScreen();
 
-    expect(screen.getByText('Test User')).toBeOnTheScreen();
-    expect(screen.getByText('test@test.com')).toBeOnTheScreen();
+    // go to account screen
+    await user.press(screen.getByRole('button', { name: 'Account' }));
+    expect(await screen.findByText('Test User')).toBeOnTheScreen();
+    expect(await screen.findByText('test@test.com')).toBeOnTheScreen();
 
-    const signOutButton = screen.getByRole('button', { name: 'Sign out' });
-    // Press the sign out button
-    await user.press(signOutButton);
-
-    // The user should be navigated to the sign-in screen
-    expect(screen.getByRole('button', { name: 'Sign In' })).toBeOnTheScreen();
+    // return to login screen after signing out
+    await user.press(screen.getByRole('button', { name: 'Sign out' }));
+    expect(await screen.findByPlaceholderText('Email')).toBeOnTheScreen();
+    expect(await screen.findByPlaceholderText('Password')).toBeOnTheScreen();
   });
 });
