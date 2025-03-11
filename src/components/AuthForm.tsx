@@ -1,27 +1,21 @@
 import React, { useState, useContext } from 'react';
-import { TextInput, Text, StyleSheet, Modal, Alert, Pressable, View } from 'react-native';
-import { Context as AuthContext } from 'src/components/context/AuthContext';
+import { TextInput, Text, StyleSheet, Modal, Pressable, View } from 'react-native';
 import tw from 'twrnc';
 
 import Button from './Button';
 import CheckBox from './CheckBox';
+import { Context as AuthContext } from '../components/context/AuthContext';
 
 interface LoginFieldProps {
-  errorMessage: string;
-  submitButtonText: string;
-  onSubmit: ({ email, password}) => void;
-  style?: StyleSheet.NamedStyles<any>;
+  errorMessage?: string;
 }
 
 const AuthForm: React.FC<LoginFieldProps> = ({
   errorMessage,
-  submitButtonText,
-  onSubmit,
-  style,
 }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [staySignedIn, setStaySignedIn] = useState<boolean>(false)
+  const [staySignedIn, setStaySignedIn] = useState<boolean>(false);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const { signin } = useContext(AuthContext);
@@ -34,9 +28,9 @@ const AuthForm: React.FC<LoginFieldProps> = ({
     }
   };
 
-  const handleStaySignInToggle = () => { 
-    setStaySignedIn(!staySignedIn); 
-    if (!staySignedIn) setModalVisible(true); 
+  const handleStaySignInToggle = () => {
+    setStaySignedIn(!staySignedIn);
+    if (!staySignedIn) setModalVisible(true);
   };
 
   return (
@@ -58,15 +52,11 @@ const AuthForm: React.FC<LoginFieldProps> = ({
         autoCorrect={false}
         onChangeText={setPassword}
       />
-      <CheckBox
-        onPress={handleStaySignInToggle}
-        title="Stay Logged In"
-        isChecked={staySignedIn}
-      />
-      {errorMessage && <Text className="pl-4 text-red-500">{errorMessage}</Text>}
+      <CheckBox onPress={handleStaySignInToggle} title="Stay Logged In" isChecked={staySignedIn} />
+      {errorMessage && <Text style={tw`pl-4 text-red-500`}>{errorMessage}</Text>}
       <Button
         buttonStyle={tw`flex bg-[#ea5a4e] rounded-3xl w-40 h-10  flex justify-center items-center
-          ${!email || !password ? 'bg-gray-400' : 'bg-[#ea5a4e]'}` }
+          ${!email || !password ? 'bg-gray-400' : 'bg-[#ea5a4e]'}`}
         textStyle={tw`text-xl font-bold text-white`}
         title="Sign In"
         onPress={handleSignIn}
@@ -74,14 +64,16 @@ const AuthForm: React.FC<LoginFieldProps> = ({
       />
       <Modal
         animationType="slide"
-        transparent={true}
+        transparent
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
         <View style={tw`flex-1 justify-center items-center`}>
           <View style={tw`m-5 bg-white rounded-2xl p-9 items-center shadow-lg`}>
-            <Text style={tw`mb-4 text-center`}>Your session will stay active until you sign out.</Text>
+            <Text style={tw`mb-4 text-center`}>
+              Your session will stay active until you sign out.
+            </Text>
             <Pressable
               style={tw`rounded-2xl px-4 py-2 bg-[#345073]`}
               onPress={() => setModalVisible(!modalVisible)}>
