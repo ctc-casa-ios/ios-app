@@ -8,7 +8,7 @@ const authReducer = (state, action) => {
     case 'signin':
       return { ...state, isSignedIn: true, api_token: action.payload.api_token, refresh_token: action.payload.refresh_token, user: action.payload.user };
     case 'signout':
-      return { ...state, isSignedIn: false, api_token: null, refresh_token: null };
+      return { ...state, isSignedIn: false, api_token: null, refresh_token: null, user: null };
     case 'update_user':
       return { ...state, user: action.payload };
     default:
@@ -51,8 +51,10 @@ const signin = (dispatch) => async (email, password) => {
 
 const signout = (dispatch) => async () => {
   try {
-    await AsyncStorage.removeItem('api_token');
-    await AsyncStorage.removeItem('refresh_token');
+    const api_token = await AsyncStorage.getItem('api_token');
+    const data = await routeRequest('/api/v1/users/sign_out', { api_token });
+    await AsyncStorage.multiRemove(['api_token', 'refresh_token', 'user']);
+    //to do: do something with the data
     dispatch({ type: 'signout' });
   } catch (err) {
     console.error('Error during signout:', err);

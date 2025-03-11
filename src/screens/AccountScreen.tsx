@@ -6,9 +6,17 @@ import Button from '../components/Button';
 import { Context as AuthContext } from '../components/context/AuthContext';
 
 const AccountScreen = () => {
-  const { state } = useContext(AuthContext);
+  const { state, signout } = useContext(AuthContext);
 
   const { user } = state;
+
+  const handleSignOut = async () => {
+    try {
+      await signout();
+    } catch (err) {
+      console.error('Error during sign-out:', err);
+    }
+  };
 
   return (
     <View style={tw`flex items-center gap-3 flex-1 bg-[#d5d7da]`}>
@@ -27,7 +35,7 @@ const AccountScreen = () => {
           textStyle={tw`text-xl font-bold text-white`}
           title="Sign out"
           titleColor="white"
-          onPress={() => console.log('For Sign out')}
+          onPress={handleSignOut}
         />
       </View>
     </View>
