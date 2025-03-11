@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Alert } from 'react-native';
-import Button from 'src/components/Button';
+import Button from '../Button';
 import tw from 'twrnc';
 
 const submit = (miles, hours, minutes, date, allCheckboxes) => {

@@ -2,42 +2,42 @@
 
 import { useState, useRef } from 'react';
 import { Alert } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-import Page1 from 'src/components/FormPages/Page1';
-import Page2 from 'src/components/FormPages/Page2';
-import Page3 from 'src/components/FormPages/Page3';
-import Page4 from 'src/components/FormPages/Page4';
-import { toggleCheckbox } from 'src/slices/createScreenSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import Page1 from './Page1';
+import Page2 from './Page2';
+import Page3 from './Page3';
+import Page4 from './Page4';
+import { toggleCheckbox } from '../../slices/createScreenSlice';
 
 const RenderFormPage = ({ currentPage }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // Use selector to access specific checkbox group from the state
-  const checkboxes1 = useSelector((state) => state.createScreen.checkboxes1);
+  const checkboxes1 = useAppSelector((state) => state.createScreen.checkboxes1);
 
-  const checkboxesCasa = useSelector((state) => state.createScreen.checkboxesCasa);
-  const checkboxesEducation = useSelector((state) => state.createScreen.checkboxesEducation);
-  const checkboxesFamily = useSelector((state) => state.createScreen.checkboxesFamily);
-  const checkboxesHealth = useSelector((state) => state.createScreen.checkboxesHealth);
-  const checkboxesLegal = useSelector((state) => state.createScreen.checkboxesLegal);
-  const checkboxesPlacement = useSelector((state) => state.createScreen.checkboxesPlacement);
-  const checkboxesSS = useSelector((state) => state.createScreen.checkboxesSS);
+  const checkboxesCasa = useAppSelector((state) => state.createScreen.checkboxesCasa);
+  const checkboxesEducation = useAppSelector((state) => state.createScreen.checkboxesEducation);
+  const checkboxesFamily = useAppSelector((state) => state.createScreen.checkboxesFamily);
+  const checkboxesHealth = useAppSelector((state) => state.createScreen.checkboxesHealth);
+  const checkboxesLegal = useAppSelector((state) => state.createScreen.checkboxesLegal);
+  const checkboxesPlacement = useAppSelector((state) => state.createScreen.checkboxesPlacement);
+  const checkboxesSS = useAppSelector((state) => state.createScreen.checkboxesSS);
 
-  const checkboxes3a = useSelector((state) => state.createScreen.checkboxes3a);
-  const checkboxes3b = useSelector((state) => state.createScreen.checkboxes3b);
-  const checkboxes4b = useSelector((state) => state.createScreen.checkboxes4b);
+  const checkboxes3a = useAppSelector((state) => state.createScreen.checkboxes3a);
+  const checkboxes3b = useAppSelector((state) => state.createScreen.checkboxes3b);
+  const checkboxes4b = useAppSelector((state) => state.createScreen.checkboxes4b);
 
   const [show, setShow] = useState(false);
   const textInputRef = useRef(null);
 
-  const miles = useSelector((state) => state.createScreen.miles);
+  const miles = useAppSelector((state) => state.createScreen.miles);
 
-  const hours = useSelector((state) => state.createScreen.hours);
-  const minutes = useSelector((state) => state.createScreen.minutes);
+  const hours = useAppSelector((state) => state.createScreen.hours);
+  const minutes = useAppSelector((state) => state.createScreen.minutes);
 
-  const notes = useSelector((state) => state.createScreen.notes);
+  const notes = useAppSelector((state) => state.createScreen.notes);
 
-  const date = useSelector((state) => state.createScreen.date);
+  const date = useAppSelector((state) => state.createScreen.date);
 
   const allCheckboxes = {
     checkboxes1,

@@ -2,7 +2,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import React from 'react';
 import { View, Text, ScrollView, TextInput } from 'react-native';
 import { CheckBox } from 'react-native-elements';
-import Button from 'src/components/Button';
+import Button from '../Button';
 import tw from 'twrnc';
 
 const Page3 = ({

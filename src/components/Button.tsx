@@ -19,7 +19,11 @@ const Button: React.FC<Props> = ({
   disabled,
 }) => {
   return (
-    <TouchableOpacity style={buttonStyle} onPress={onPress} disabled={disabled}>
+    <TouchableOpacity
+      style={buttonStyle}
+      onPress={onPress}
+      disabled={disabled}
+      accessibilityRole="button">
       <Text style={textStyle} onPress={disabled ? undefined : onPress} disabled={disabled}>
         {title}
       </Text>

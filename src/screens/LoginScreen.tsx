@@ -1,11 +1,11 @@
 import { View, Image } from 'react-native';
-import AuthForm from 'src/components/AuthForm';
+import AuthForm from '../components/AuthForm';
 import tw from 'twrnc';
 
 // note to self: removed previously added "w-65 h-auto pb-20 z-1" from rfgLogo
 
-const casaLogo = require('assets/casaLogo.png');
-const rfgLogo = require('assets/rfgLogo.png');
+const casaLogo = require('../../assets/casaLogo.png');
+const rfgLogo = require('../../assets/rfgLogo.png');
 
 function LoginScreen() {
   return (
@@ -15,7 +15,7 @@ function LoginScreen() {
       </View>
 
       <View style={tw`justify-start items-center gap-4 flex h-1/3 w-screen bg-[#345073] pb-20`}>
-        <AuthForm submitButtonText="Sign-In" onSubmit={console.log('placeholder')} />
+        <AuthForm />
       </View>
 
       <View style={tw`flex h-1/3 w-screen items-center`}>

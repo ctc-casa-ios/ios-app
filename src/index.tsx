@@ -1,23 +1,17 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { registerRootComponent } from 'expo';
 import React, { useContext } from 'react';
 import { View } from 'react-native';
-import { Provider } from 'react-redux';
-import Button from 'src/components/Button';
-import {
-  Provider as AuthProvider,
-  Context as AuthContext,
-} from 'src/components/context/AuthContext';
-import AccountScreen from 'src/screens/AccountScreen';
-import CaseContactCreateScreen from 'src/screens/CaseContactCreateScreen';
-import CaseContactDetailScreen from 'src/screens/CaseContactDetailScreen';
-import CaseContactListScreen from 'src/screens/CaseContactListScreen';
-import LoginScreen from 'src/screens/LoginScreen';
 import tw from 'twrnc';
 
-import { store } from './redux/store';
+import Button from './components/Button';
+import { Context as AuthContext } from './components/context/AuthContext';
+import AccountScreen from './screens/AccountScreen';
+import CaseContactCreateScreen from './screens/CaseContactCreateScreen';
+import CaseContactDetailScreen from './screens/CaseContactDetailScreen';
+import CaseContactListScreen from './screens/CaseContactListScreen';
+import LoginScreen from './screens/LoginScreen';
 
 const Tab = createBottomTabNavigator();
 const RootStack = createNativeStackNavigator();
@@ -60,7 +54,7 @@ function TabNavigator() {
   );
 }
 
-function MainApp() {
+function Main() {
   const { state, tryLocalSignin } = useContext(AuthContext);
   // Attempt to restore token from AsyncStorage when the app starts
   /*
@@ -90,14 +84,5 @@ function MainApp() {
   );
 }
 
-function App() {
-  return (
-    <AuthProvider>
-      <Provider store={store}>
-        <MainApp />
-      </Provider>
-    </AuthProvider>
-  );
-}
-
-registerRootComponent(App);
+//registerRootComponent(App);
+export default Main;
