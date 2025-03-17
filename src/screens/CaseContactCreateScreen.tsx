@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import RenderFormPages from 'src/components/FormPages/RenderFormPages';
+import RenderFormPages from '../components/FormPages/RenderFormPages';
 import tw from 'twrnc';
 
 import Button from '../components/Button';
